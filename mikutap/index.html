@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" /> 
+  <meta name="description" content="クリック/タッチすることで、モーショングラフィックスと共に音を奏でるインタラクティブコンテンツの初音ミク版。" /> 
+  <title>Mikutap</title> 
+  <link rel="apple-touch-icon" href="icon.png" /> 
+  <link href="https://fonts.proxy.ustclug.org/css?family=Quicksand:400" rel="stylesheet" /> 
+  <link charset="UTF-8" href="css/common.css" rel="stylesheet" /> 
+  <link charset="utf-8" href="css/mikutap.css" rel="stylesheet" /> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100758199-1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.11/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  <script charset="UTF-8" src="js/common.js?2" type="text/javascript"></script> 
+  <script charset="utf-8" src="js/mikutap.js" type="text/javascript"></script> 
+ </head> 
+ <body> 
+  <div id="view"></div> 
+  <div id="scene_top"> 
+   <h1>Mikutap</h1> 
+   <div id="ng"> 
+    <p class="atten">申し訳ございません、<br />お使いの端末又はブラウザには対応しておりません。</p> 
+   </div> 
+   <div class="ok"> 
+    <p id="bt_start"><a href="">START</a></p> 
+   </div> 
+   <p id="bt_about"><a href="">ABOUT</a></p> 
+   <div class="ok"> 
+    <p class="attention">※サウンドをオンにしてお楽しみください。</p> 
+   </div>
+  </div> 
+  <div id="scene_loading"> 
+   <hr size="1" color="#fff" /> 
+  </div> 
+  <div id="scene_main"> 
+   <div class="set"> 
+    <p class="attention">CLICK &amp; DRAG or PRESS ANY KEY!</p> 
+    <p id="bt_feedback"><a href="">FEEDBACK: ON</a></p> 
+    <p id="bt_backtrack"><a href="">BACKTRACK: ON</a></p> 
+   </div> 
+  </div> 
+  <div id="about_cover"></div> 
+  <div id="about"> 
+   <div id="about_in"> 
+    <p class="close"><span id="bt_close">&times;</span></p> 
+    <p class="con"> Voiced by <a href="https://ec.crypton.co.jp/pages/prod/vocaloid/mikuv4x" target="_blank">Hatsune Miku</a> </p> 
+    <p class="con"> Created by <a href="https://aidn.jp" target="_blank">daniwell</a> (<a href="https://twitter.com/daniwell_aidn" target="_blank">twitter</a>) </p> 
+    <p class="link">Inspired by <a href="http://patatap.com/" target="_blank">Patatap</a><br />(Wonderful website!)</p> 
+   </div> 
+  </div> 
+  <div id="bt_back">
+   ＜
+  </div> 
+  <div id="bt_fs">
+   □
+  </div>  
+ </body>
+</html>

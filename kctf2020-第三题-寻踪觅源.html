@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":"auto","color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="Ghidra -&gt; Search -&gt; For Strings 看到quickjs, google that. 编译 运行 quickjs $ git clone https:&#x2F;&#x2F;github.com&#x2F;horhof&#x2F;quickjs.git -b 20200119 --depth 1cd quickjs$ make$ echo &quot;console.log(&#39;hello&#39;)&quot; &gt; ct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kctf2020-{第三题 寻踪觅源}">
+<meta property="og:url" content="https://blog.d2x3.cn/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html">
+<meta property="og:site_name" content="瞎几把XI[U]E">
+<meta property="og:description" content="Ghidra -&gt; Search -&gt; For Strings 看到quickjs, google that. 编译 运行 quickjs $ git clone https:&#x2F;&#x2F;github.com&#x2F;horhof&#x2F;quickjs.git -b 20200119 --depth 1cd quickjs$ make$ echo &quot;console.log(&#39;hello&#39;)&quot; &gt; ct">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-19T03:26:40.000Z">
+<meta property="article:modified_time" content="2020-04-19T03:26:40.000Z">
+<meta property="article:author" content="dzxs">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.d2x3.cn/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>kctf2020-{第三题 寻踪觅源} | 瞎几把XI[U]E</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">瞎几把XI[U]E</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">XIA几把学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">45</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-mikutap">
+
+    <a href="/mikutap/index.html" rel="section"><i class="fa fa-fw fa-music"></i>mikutap</a>
+
+  </li>
+        <li class="menu-item menu-item-看电视">
+
+    <a href="/TV/index.html" rel="section"><i class="fa fa-fw fa-backward"></i>看电视</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dzxs" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/6087117?s=460&v=4">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kctf2020-{第三题 寻踪觅源}
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-19 11:26:40" itemprop="dateCreated datePublished" datetime="2020-04-19T11:26:40+08:00">2020-04-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kctf2020/" itemprop="url" rel="index"><span itemprop="name">kctf2020</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><code>Ghidra</code> -&gt; <code>Search</code> -&gt; <code>For Strings</code></p>
+<p>看到<code>quickjs</code>, google that.</p>
+<p>编译 运行 <code>quickjs</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/horhof/quickjs.git -b 20200119 --depth 1</span><br><span class="line"><span class="built_in">cd</span> quickjs</span><br><span class="line">$ make</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"console.log('hello')"</span> &gt; ctf.js</span><br><span class="line">$ ./qjsc -e -o ctf.c ctf.js</span><br><span class="line">$ cc ctf.c libquickjs.lto.a -o ctf</span><br><span class="line">$ ./ctf</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+
+<p>check <code>ctf.c</code></p>
+<a id="more"></a>
+<p>得到<code>qjsc</code>字样, 从<code>lelfei_fix.exe</code>复制<code>_qjsc_s -&gt; [0x00458040 - 0x0045841b]</code></p>
+<ul>
+<li><p><code>Ghidra</code> -&gt; <code>Copy</code> -&gt; <code>Copy Special</code> -&gt; <code>Byte String</code></p>
+</li>
+<li><p><code>python3 -c &quot;s=&#39;...&#39;;print(s.replace(&#39; &#39;, &#39;, 0x&#39;))&quot;|clipcopy</code></p>
+</li>
+<li><p><code>vim ctf.c</code></p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* File generated automatically by the QuickJS compiler. */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"quickjs-libc.h"</span></span></span><br><span class="line"><span class="comment">/* 0x0045841b - 0x00458040 + 1 */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">uint32_t</span> qjsc_ctf_size = <span class="number">988</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">uint8_t</span> qjsc_ctf[<span class="number">988</span>] = &#123;</span><br><span class="line"><span class="number">0x02</span>, <span class="number">0x0e</span>, <span class="number">0x04</span>, <span class="number">0x75</span>, <span class="number">0x6e</span>, <span class="number">0x04</span>, <span class="number">0x73</span>, <span class="number">0x6e</span>, <span class="number">0x02</span>, <span class="number">0x73</span>, <span class="number">0x02</span>, <span class="number">0x69</span>, <span class="number">0x02</span>, <span class="number">0x6a</span>, <span class="number">0x02</span>, <span class="number">0x6b</span>, <span class="number">0x02</span>, <span class="number">0x6c</span>, <span class="number">0x02</span>, <span class="number">0x6d</span>, <span class="number">0x02</span>, <span class="number">0x6e</span>, <span class="number">0x20</span>, <span class="number">0x4b</span>, <span class="number">0x43</span>, <span class="number">0x54</span>, <span class="number">0x46</span>, <span class="number">0x32</span>, <span class="number">0x30</span>, <span class="number">0x32</span>, <span class="number">0x30</span>, <span class="number">0x51</span>, <span class="number">0x31</span>, <span class="number">0x6c</span>, <span class="number">0x65</span>, <span class="number">0x6c</span>, <span class="number">0x66</span>, <span class="number">0x65</span>, <span class="number">0x69</span>, <span class="number">0x40</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x2a</span>, <span class="number">0x14</span>, <span class="number">0x63</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x72</span>, <span class="number">0x43</span>, <span class="number">0x6f</span>, <span class="number">0x64</span>, <span class="number">0x65</span>, <span class="number">0x41</span>, <span class="number">0x74</span>, <span class="number">0x18</span>, <span class="number">0x66</span>, <span class="number">0x72</span>, <span class="number">0x6f</span>, <span class="number">0x6d</span>, <span class="number">0x43</span>, <span class="number">0x68</span>, <span class="number">0x61</span>, <span class="number">0x72</span>, <span class="number">0x43</span>, <span class="number">0x6f</span>, <span class="number">0x64</span>, <span class="number">0x65</span>, <span class="number">0x0a</span>, <span class="number">0x70</span>, <span class="number">0x72</span>, <span class="number">0x69</span>, <span class="number">0x6e</span>, <span class="number">0x74</span>, <span class="number">0x0e</span>, <span class="number">0x00</span>, <span class="number">0x06</span>, <span class="number">0x00</span>, <span class="number">0x9e</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x06</span>, <span class="number">0x00</span>, <span class="number">0x0b</span>, <span class="number">0x81</span>, <span class="number">0x06</span>, <span class="number">0x01</span>, <span class="number">0xa0</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xdf</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x40</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xdf</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x3f</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x04</span>, <span class="number">0xe8</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xdf</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x04</span>, <span class="number">0xe9</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xc1</span>, <span class="number">0x00</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0xb7</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0e</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xdf</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xeb</span>, <span class="number">0xa5</span>, <span class="number">0xec</span>, <span class="number">0x43</span>, <span class="number">0x39</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x01</span>, <span class="number">0x9c</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xb0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xdf</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x43</span>, <span class="number">0xea</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x24</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0xf1</span>, <span class="number">0x9f</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x93</span>, <span class="number">0x3a</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0e</span>, <span class="number">0xee</span>, <span class="number">0xb1</span>, <span class="number">0x39</span>, <span class="number">0x96</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x02</span>, <span class="number">0x9e</span>, <span class="number">0xf1</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xc1</span>, <span class="number">0x03</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xb7</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xb7</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0xb7</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0e</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xeb</span>, <span class="number">0xa5</span>, <span class="number">0x6a</span>, <span class="number">0x4c</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x43</span>, <span class="number">0xea</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x24</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x30</span>, <span class="number">0xa8</span>, <span class="number">0x11</span>, <span class="number">0xec</span>, <span class="number">0x0a</span>, <span class="number">0x0e</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x39</span>, <span class="number">0xa6</span>, <span class="number">0x11</span>, <span class="number">0xed</span>, <span class="number">0x17</span>, <span class="number">0x0e</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x61</span>, <span class="number">0xa8</span>, <span class="number">0x6a</span>, <span class="number">0x0c</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x66</span>, <span class="number">0xa6</span>, <span class="number">0x6a</span>, <span class="number">0xff</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x93</span>, <span class="number">0x3a</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x30</span>, <span class="number">0xa0</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x09</span>, <span class="number">0xa7</span>, <span class="number">0xec</span>, <span class="number">0x10</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x27</span>, <span class="number">0xa0</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x10</span>, <span class="number">0x9c</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x9f</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe4</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xb9</span>, <span class="number">0x9e</span>, <span class="number">0xb7</span>, <span class="number">0xab</span>, <span class="number">0x6a</span>, <span class="number">0x89</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe5</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xb0</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbb</span>, <span class="number">0xa3</span>, <span class="number">0xbf</span>, <span class="number">0x09</span>, <span class="number">0xa7</span>, <span class="number">0x11</span>, <span class="number">0xed</span>, <span class="number">0x0d</span>, <span class="number">0x0e</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x10</span>, <span class="number">0x9e</span>, <span class="number">0xbf</span>, <span class="number">0x09</span>, <span class="number">0xa7</span>, <span class="number">0xec</span>, <span class="number">0x0c</span>, <span class="number">0xc1</span>, <span class="number">0x04</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xee</span>, <span class="number">0x5b</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbb</span>, <span class="number">0xa3</span>, <span class="number">0xbf</span>, <span class="number">0x0a</span>, <span class="number">0x9c</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xbf</span>, <span class="number">0x10</span>, <span class="number">0x9e</span>, <span class="number">0x9f</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x05</span>, <span class="number">0x9c</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xb0</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xf1</span>, <span class="number">0x9f</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xb7</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xee</span>, <span class="number">0x01</span>, <span class="number">0x39</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x93</span>, <span class="number">0x3a</span>, <span class="number">0xe2</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x0e</span>, <span class="number">0xef</span>, <span class="number">0xa9</span>, <span class="number">0xfe</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe6</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xab</span>, <span class="number">0xec</span>, <span class="number">0x0c</span>, <span class="number">0xc1</span>, <span class="number">0x06</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xee</span>, <span class="number">0x0a</span>, <span class="number">0xc1</span>, <span class="number">0x07</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xc3</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x06</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x08</span>, <span class="number">0xa7</span>, <span class="number">0xec</span>, <span class="number">0x3a</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0x97</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x43</span>, <span class="number">0xeb</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0x96</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x09</span>, <span class="number">0x9e</span>, <span class="number">0xf1</span>, <span class="number">0x24</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x9f</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0x39</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xc1</span>, <span class="number">0x0a</span>, <span class="number">0x9d</span>, <span class="number">0x11</span>, <span class="number">0x3a</span>, <span class="number">0xe7</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xcb</span>, <span class="number">0xee</span>, <span class="number">0xbe</span>, <span class="number">0x39</span>, <span class="number">0xec</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x39</span>, <span class="number">0xe1</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xf1</span>, <span class="number">0xcf</span>, <span class="number">0x28</span>, <span class="number">0xc2</span>, <span class="number">0x03</span>, <span class="number">0x01</span>, <span class="number">0x2b</span>, <span class="number">0x00</span>, <span class="number">0x3c</span>, <span class="number">0x01</span>, <span class="number">0x00</span>, <span class="number">0x3c</span>, <span class="number">0x06</span>, <span class="number">0x3f</span>, <span class="number">0x3f</span>, <span class="number">0x30</span>, <span class="number">0x7b</span>, <span class="number">0x4e</span>, <span class="number">0xbc</span>, <span class="number">0x49</span>, <span class="number">0x6d</span>, <span class="number">0x30</span>, <span class="number">0x2b</span>, <span class="number">0x2b</span>, <span class="number">0x8a</span>, <span class="number">0x80</span>, <span class="number">0x00</span>, <span class="number">0x34</span>, <span class="number">0x02</span>, <span class="number">0x3f</span>, <span class="number">0x4e</span>, <span class="number">0x8a</span>, <span class="number">0x4e</span>, <span class="number">0x5d</span>, <span class="number">0x53</span>, <span class="number">0x5d</span>, <span class="number">0xcb</span>, <span class="number">0x85</span>, <span class="number">0x4e</span>, <span class="number">0x7b</span>, <span class="number">0x2c</span>, <span class="number">0x0f</span>, <span class="number">0x4f</span>, <span class="number">0x85</span>, <span class="number">0x30</span>, <span class="number">0x2b</span>, <span class="number">0x3f</span>, <span class="number">0xcb</span>, <span class="number">0x4e</span>, <span class="number">0x0d</span>, <span class="number">0x0a</span>, <span class="number">0x00</span>, <span class="number">0x0a</span>, <span class="number">0x24</span>, <span class="number">0x01</span>, <span class="number">0xac</span>, <span class="number">0x0a</span>, <span class="number">0x28</span>, <span class="number">0x01</span>, <span class="number">0xfe</span>, <span class="number">0x0a</span>, <span class="number">0x00</span>, <span class="number">0x0a</span>, <span class="number">0x00</span>, <span class="number">0x0a</span>, <span class="number">0x28</span>, <span class="number">0x01</span>, <span class="number">0xc8</span>, <span class="number">0x0a</span>, <span class="number">0xe8</span>, <span class="number">0x01</span>, <span class="number">0x07</span>, <span class="number">0x44</span>, <span class="number">0xb8</span>, <span class="number">0x90</span>, <span class="number">0xb5</span>, <span class="number">0x6b</span>, <span class="number">0x67</span>, <span class="number">0x80</span>, <span class="number">0x0a</span>, <span class="number">0xe8</span>, <span class="number">0x01</span>, <span class="number">0x07</span>, <span class="number">0x34</span>, <span class="number">0xa7</span>, <span class="number">0xb8</span>, <span class="number">0x48</span>, <span class="number">0x7f</span>, <span class="number">0x8d</span>, <span class="number">0xaf</span>, <span class="number">0x0a</span>, <span class="number">0x00</span>, <span class="number">0x0a</span>, <span class="number">0x28</span>, <span class="number">0x01</span>, <span class="number">0xfe</span>, <span class="number">0x0a</span>, <span class="number">0x28</span>, <span class="number">0x01</span>, <span class="number">0xfe</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  JSRuntime *rt;</span><br><span class="line">  JSContext *ctx;</span><br><span class="line">  rt = JS_NewRuntime();</span><br><span class="line">  ctx = JS_NewContextRaw(rt);</span><br><span class="line">  JS_SetModuleLoaderFunc(rt, <span class="literal">NULL</span>, js_module_loader, <span class="literal">NULL</span>);</span><br><span class="line">  JS_AddIntrinsicBaseObjects(ctx);</span><br><span class="line">  JS_AddIntrinsicDate(ctx);</span><br><span class="line">  JS_AddIntrinsicEval(ctx);</span><br><span class="line">  JS_AddIntrinsicStringNormalize(ctx);</span><br><span class="line">  JS_AddIntrinsicRegExp(ctx);</span><br><span class="line">  JS_AddIntrinsicJSON(ctx);</span><br><span class="line">  JS_AddIntrinsicProxy(ctx);</span><br><span class="line">  JS_AddIntrinsicMapSet(ctx);</span><br><span class="line">  JS_AddIntrinsicTypedArrays(ctx);</span><br><span class="line">  JS_AddIntrinsicPromise(ctx);</span><br><span class="line">  JS_AddIntrinsicBigInt(ctx);</span><br><span class="line">  js_std_add_helpers(ctx, argc, argv);</span><br><span class="line">  js_std_eval_binary(ctx, qjsc_ctf, qjsc_ctf_size, <span class="number">0</span>);</span><br><span class="line">  js_std_loop(ctx);</span><br><span class="line">  JS_FreeContext(ctx);</span><br><span class="line">  JS_FreeRuntime(rt);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译 <code>ctf.c</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cc ctf.c libquickjs.lto.a -o ctf</span><br><span class="line">$ ./ctf</span><br><span class="line">Error...</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>quickjs.c</code>, 使其输出 <code>byte_code</code></p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">diff --git a/quickjs.c b/quickjs.c</span><br><span class="line">index b19a4d9..9a3f483 100644</span><br><span class="line"><span class="comment">--- a/quickjs.c</span></span><br><span class="line"><span class="comment">+++ b/quickjs.c</span></span><br><span class="line"><span class="meta">@@ -82,7 +82,7 @@</span></span><br><span class="line">   16: dump bytecode in hex</span><br><span class="line">   32: dump line number table</span><br><span class="line">  */</span><br><span class="line"><span class="deletion">-//#define DUMP_BYTECODE  (1)</span></span><br><span class="line"><span class="addition">+#define DUMP_BYTECODE  (1)</span></span><br><span class="line"> /* dump the occurence of the automatic GC */</span><br><span class="line"> //#define DUMP_GC</span><br><span class="line"> /* dump objects freed by the garbage collector */</span><br><span class="line"><span class="meta">@@ -96,7 +96,7 @@</span></span><br><span class="line"> //#define DUMP_SHAPES     /* dump shapes in JS_FreeContext */</span><br><span class="line"> //#define DUMP_MODULE_RESOLVE</span><br><span class="line"> //#define DUMP_PROMISE</span><br><span class="line"><span class="deletion">-//#define DUMP_READ_OBJECT</span></span><br><span class="line"><span class="addition">+#define DUMP_READ_OBJECT</span></span><br><span class="line"> </span><br><span class="line"> /* test the GC by forcing it before each object allocation */</span><br><span class="line"> //#define FORCE_GC_AT_MALLOC</span><br><span class="line">@@ -33897,6 +33897,9 @@ static JSValue JS_ReadObjectRec(BCReaderState *s)</span><br><span class="line">                 bc_read_trace(s, "&#125;\n");</span><br><span class="line">             &#125;</span><br><span class="line">             bc_read_trace(s, "&#125;\n");</span><br><span class="line"><span class="addition">+#if DUMP_BYTECODE</span></span><br><span class="line"><span class="addition">+            js_dump_function_bytecode(ctx, b);</span></span><br><span class="line"><span class="addition">+#endif</span></span><br><span class="line">         &#125;</span><br><span class="line">         break;</span><br><span class="line">     case BC_TAG_MODULE:</span><br></pre></td></tr></table></figure>
+
+<p>重新编译运行 <code>ctf.c</code>, 得到输出信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ make</span><br><span class="line">$ cc ctf.c libquickjs.lto.a -o ctf</span><br><span class="line">$ ./ctf</span><br><span class="line">0000:  02 0e                    14 atom indexes &#123;</span><br><span class="line">0002:  04 75 6e                   string: 1<span class="string">"un"</span></span><br><span class="line">0005:  04 73 6e                   string: 1<span class="string">"sn"</span></span><br><span class="line">0008:  02 73                      string: 1<span class="string">"s"</span></span><br><span class="line">000a:  02 69                      string: 1<span class="string">"i"</span></span><br><span class="line">000c:  02 6a                      string: 1<span class="string">"j"</span></span><br><span class="line">000e:  02 6b                      string: 1<span class="string">"k"</span></span><br><span class="line">0010:  02 6c                      string: 1<span class="string">"l"</span></span><br><span class="line">0012:  02 6d                      string: 1<span class="string">"m"</span></span><br><span class="line">0014:  02 6e                      string: 1<span class="string">"n"</span></span><br><span class="line">0016:  20 4b 43 54 46 32 30 32</span><br><span class="line">       30 51 31 6c 65 6c 66 65</span><br><span class="line">       69                         string: 1<span class="string">"KCTF2020Q1lelfei"</span></span><br><span class="line">0027:  40 2a 2a 2a 2a 2a 2a 2a</span><br><span class="line">       2a 2a 2a 2a 2a 2a 2a 2a</span><br><span class="line">       2a 2a 2a 2a 2a 2a 2a 2a</span><br><span class="line">       2a 2a 2a 2a 2a 2a 2a 2a</span><br><span class="line">       2a                         string: 1<span class="string">"********************************"</span></span><br><span class="line">0048:  14 63 68 61 72 43 6f 64</span><br><span class="line">       65 41 74                   string: 1<span class="string">"charCodeAt"</span></span><br><span class="line">0053:  18 66 72 6f 6d 43 68 61</span><br><span class="line">       72 43 6f 64 65             string: 1<span class="string">"fromCharCode"</span></span><br><span class="line">0060:  0a 70 72 69 6e 74          string: 1<span class="string">"print"</span></span><br><span class="line">                                &#125;</span><br><span class="line">0066:  0e                       <span class="keyword">function</span> &#123;</span><br><span class="line">0067:  00 06 00 9e 01 00 01 00</span><br><span class="line">       06 00 0b 81 06 01          name: <span class="string">"&lt;eval&gt;"</span></span><br><span class="line">                                  args=0 vars=1 defargs=0 closures=0 cpool=11</span><br><span class="line">                                  stack=6 bclen=769 locals=1</span><br><span class="line">                                  vars &#123;</span><br><span class="line">0075:  a0 01 00 00 00               name: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">                                  &#125;</span><br><span class="line">                                  bytecode &#123;</span><br><span class="line">007a:  40 df 00 00 00 00 40 e0</span><br><span class="line">       00 00 00 00 40 e1 00 00</span><br><span class="line">       00 00 40 e2 00 00 00 00</span><br><span class="line">       40 e3 00 00 00 00 40 e4</span><br><span class="line">       00 00 00 00 40 e5 00 00</span><br><span class="line">       00 00 40 e6 00 00 00 00</span><br><span class="line">       40 e7 00 00 00 00 40 e2</span><br><span class="line">       00 00 00 00 3f df 00 00</span><br><span class="line">       00 00 3f e0 00 00 00 00</span><br><span class="line">       3f e1 00 00 00 00 3f e2</span><br><span class="line">       00 00 00 00 3f e3 00 00</span><br><span class="line">       00 00 3f e4 00 00 00 00</span><br><span class="line">       3f e5 00 00 00 00 3f e6</span><br><span class="line">       00 00 00 00 3f e7 00 00</span><br><span class="line">       00 00 3f e2 00 00 00 00</span><br><span class="line">       04 e8 00 00 00 11 3a df</span><br><span class="line">       00 00 00 cb 04 e9 00 00</span><br><span class="line">       00 11 3a e0 00 00 00 cb</span><br><span class="line">       c1 00 11 3a e6 00 00 00</span><br><span class="line">       cb 06 cb b7 11 3a e2 00</span><br><span class="line">       00 00 0e 39 e2 00 00 00</span><br><span class="line">       39 df 00 00 00 eb a5 ec</span><br><span class="line">       43 39 e6 00 00 00 c1 01</span><br><span class="line">       9c 11 3a e6 00 00 00 cb</span><br><span class="line">       39 e6 00 00 00 39 b0 00</span><br><span class="line">       00 00 39 df 00 00 00 43</span><br><span class="line">       ea 00 00 00 39 e2 00 00</span><br><span class="line">       00 24 01 00 f1 9f 11 3a</span><br><span class="line">       e6 00 00 00 cb 39 e2 00</span><br><span class="line">       00 00 93 3a e2 00 00 00</span><br><span class="line">       0e ee b1 39 96 00 00 00</span><br><span class="line">       39 e6 00 00 00 c1 02 9e</span><br><span class="line">       f1 11 3a e5 00 00 00 cb</span><br><span class="line">       c1 03 11 3a e7 00 00 00</span><br><span class="line">       cb b7 11 3a e1 00 00 00</span><br><span class="line">       cb b7 11 3a e4 00 00 00</span><br><span class="line">       cb 06 cb b7 11 3a e2 00</span><br><span class="line">       00 00 0e 39 e2 00 00 00</span><br><span class="line">       39 e0 00 00 00 eb a5 6a</span><br><span class="line">       4c 01 00 00 39 e0 00 00</span><br><span class="line">       00 43 ea 00 00 00 39 e2</span><br><span class="line">       00 00 00 24 01 00 11 3a</span><br><span class="line">       e3 00 00 00 cb 06 cb 39</span><br><span class="line">       e3 00 00 00 bf 30 a8 11</span><br><span class="line">       ec 0a 0e 39 e3 00 00 00</span><br><span class="line">       bf 39 a6 11 ed 17 0e 39</span><br><span class="line">       e3 00 00 00 bf 61 a8 6a</span><br><span class="line">       0c 01 00 00 39 e3 00 00</span><br><span class="line">       00 bf 66 a6 6a ff 00 00</span><br><span class="line">       00 39 e4 00 00 00 93 3a</span><br><span class="line">       e4 00 00 00 cb 39 e3 00</span><br><span class="line">       00 00 bf 30 a0 11 3a e3</span><br><span class="line">       00 00 00 cb 06 cb 39 e3</span><br><span class="line">       00 00 00 bf 09 a7 ec 10</span><br><span class="line">       39 e3 00 00 00 bf 27 a0</span><br><span class="line">       11 3a e3 00 00 00 cb 39</span><br><span class="line">       e1 00 00 00 bf 10 9c 11</span><br><span class="line">       3a e1 00 00 00 cb 39 e1</span><br><span class="line">       00 00 00 39 e3 00 00 00</span><br><span class="line">       9f 11 3a e1 00 00 00 cb</span><br><span class="line">       06 cb 39 e4 00 00 00 b9</span><br><span class="line">       9e b7 ab 6a 89 00 00 00</span><br><span class="line">       39 e1 00 00 00 39 e5 00</span><br><span class="line">       00 00 b0 11 3a e1 00 00</span><br><span class="line">       00 cb 06 cb 39 e1 00 00</span><br><span class="line">       00 bb a3 bf 09 a7 11 ed</span><br><span class="line">       0d 0e 39 e1 00 00 00 bf</span><br><span class="line">       10 9e bf 09 a7 ec 0c c1</span><br><span class="line">       04 11 3a e7 00 00 00 cb</span><br><span class="line">       ee 5b 39 e1 00 00 00 bb</span><br><span class="line">       a3 bf 0a 9c 39 e1 00 00</span><br><span class="line">       00 bf 10 9e 9f 11 3a e1</span><br><span class="line">       00 00 00 cb 39 e7 00 00</span><br><span class="line">       00 c1 05 9c 11 3a e7 00</span><br><span class="line">       00 00 cb 39 e7 00 00 00</span><br><span class="line">       39 b0 00 00 00 39 e1 00</span><br><span class="line">       00 00 f1 9f 11 3a e7 00</span><br><span class="line">       00 00 cb b7 11 3a e1 00</span><br><span class="line">       00 00 cb ee 01 39 e2 00</span><br><span class="line">       00 00 93 3a e2 00 00 00</span><br><span class="line">       0e ef a9 fe 06 cb 39 e6</span><br><span class="line">       00 00 00 39 e7 00 00 00</span><br><span class="line">       ab ec 0c c1 06 11 3a e7</span><br><span class="line">       00 00 00 cb ee 0a c1 07</span><br><span class="line">       11 3a e7 00 00 00 cb c3</span><br><span class="line">       11 3a e1 00 00 00 cb 06</span><br><span class="line">       cb 39 e7 00 00 00 c1 08</span><br><span class="line">       a7 ec 3a 39 e1 00 00 00</span><br><span class="line">       39 97 00 00 00 43 eb 00</span><br><span class="line">       00 00 39 96 00 00 00 39</span><br><span class="line">       e7 00 00 00 c1 09 9e f1</span><br><span class="line">       24 01 00 9f 11 3a e1 00</span><br><span class="line">       00 00 cb 39 e7 00 00 00</span><br><span class="line">       c1 0a 9d 11 3a e7 00 00</span><br><span class="line">       00 cb ee be 39 ec 00 00</span><br><span class="line">       00 39 e1 00 00 00 f1 cf</span><br><span class="line">       28                           at 1, fixup atom: un</span><br><span class="line">                                    at 7, fixup atom: sn</span><br><span class="line">                                    at 13, fixup atom: s</span><br><span class="line">                                    at 19, fixup atom: i</span><br><span class="line">                                    at 25, fixup atom: j</span><br><span class="line">                                    at 31, fixup atom: k</span><br><span class="line">                                    at 37, fixup atom: l</span><br><span class="line">                                    at 43, fixup atom: m</span><br><span class="line">                                    at 49, fixup atom: n</span><br><span class="line">                                    at 55, fixup atom: i</span><br><span class="line">                                    at 61, fixup atom: un</span><br><span class="line">                                    at 67, fixup atom: sn</span><br><span class="line">                                    at 73, fixup atom: s</span><br><span class="line">                                    at 79, fixup atom: i</span><br><span class="line">                                    at 85, fixup atom: j</span><br><span class="line">                                    at 91, fixup atom: k</span><br><span class="line">                                    at 97, fixup atom: l</span><br><span class="line">                                    at 103, fixup atom: m</span><br><span class="line">                                    at 109, fixup atom: n</span><br><span class="line">                                    at 115, fixup atom: i</span><br><span class="line">                                    at 121, fixup atom: KCTF2020Q1lelfei</span><br><span class="line">                                    at 127, fixup atom: un</span><br><span class="line">                                    at 133, fixup atom: <span class="string">"********************************"</span></span><br><span class="line">                                    at 139, fixup atom: sn</span><br><span class="line">                                    at 148, fixup atom: m</span><br><span class="line">                                    at 158, fixup atom: i</span><br><span class="line">                                    at 164, fixup atom: i</span><br><span class="line">                                    at 169, fixup atom: un</span><br><span class="line">                                    at 178, fixup atom: m</span><br><span class="line">                                    at 187, fixup atom: m</span><br><span class="line">                                    at 193, fixup atom: m</span><br><span class="line">                                    at 198, fixup atom: BigInt</span><br><span class="line">                                    at 203, fixup atom: un</span><br><span class="line">                                    at 208, fixup atom: charCodeAt</span><br><span class="line">                                    at 213, fixup atom: i</span><br><span class="line">                                    at 224, fixup atom: m</span><br><span class="line">                                    at 230, fixup atom: i</span><br><span class="line">                                    at 236, fixup atom: i</span><br><span class="line">                                    at 244, fixup atom: Number</span><br><span class="line">                                    at 249, fixup atom: m</span><br><span class="line">                                    at 259, fixup atom: l</span><br><span class="line">                                    at 268, fixup atom: n</span><br><span class="line">                                    at 276, fixup atom: s</span><br><span class="line">                                    at 284, fixup atom: k</span><br><span class="line">                                    at 294, fixup atom: i</span><br><span class="line">                                    at 300, fixup atom: i</span><br><span class="line">                                    at 305, fixup atom: sn</span><br><span class="line">                                    at 317, fixup atom: sn</span><br><span class="line">                                    at 322, fixup atom: charCodeAt</span><br><span class="line">                                    at 327, fixup atom: i</span><br><span class="line">                                    at 336, fixup atom: j</span><br><span class="line">                                    at 344, fixup atom: j</span><br><span class="line">                                    at 356, fixup atom: j</span><br><span class="line">                                    at 368, fixup atom: j</span><br><span class="line">                                    at 381, fixup atom: j</span><br><span class="line">                                    at 394, fixup atom: k</span><br><span class="line">                                    at 400, fixup atom: k</span><br><span class="line">                                    at 406, fixup atom: j</span><br><span class="line">                                    at 415, fixup atom: j</span><br><span class="line">                                    at 423, fixup atom: j</span><br><span class="line">                                    at 433, fixup atom: j</span><br><span class="line">                                    at 442, fixup atom: j</span><br><span class="line">                                    at 448, fixup atom: s</span><br><span class="line">                                    at 457, fixup atom: s</span><br><span class="line">                                    at 463, fixup atom: s</span><br><span class="line">                                    at 468, fixup atom: j</span><br><span class="line">                                    at 475, fixup atom: s</span><br><span class="line">                                    at 483, fixup atom: k</span><br><span class="line">                                    at 497, fixup atom: s</span><br><span class="line">                                    at 502, fixup atom: l</span><br><span class="line">                                    at 509, fixup atom: s</span><br><span class="line">                                    at 517, fixup atom: s</span><br><span class="line">                                    at 531, fixup atom: s</span><br><span class="line">                                    at 547, fixup atom: n</span><br><span class="line">                                    at 555, fixup atom: s</span><br><span class="line">                                    at 565, fixup atom: s</span><br><span class="line">                                    at 575, fixup atom: s</span><br><span class="line">                                    at 581, fixup atom: n</span><br><span class="line">                                    at 590, fixup atom: n</span><br><span class="line">                                    at 596, fixup atom: n</span><br><span class="line">                                    at 601, fixup atom: BigInt</span><br><span class="line">                                    at 606, fixup atom: s</span><br><span class="line">                                    at 614, fixup atom: n</span><br><span class="line">                                    at 622, fixup atom: s</span><br><span class="line">                                    at 630, fixup atom: i</span><br><span class="line">                                    at 636, fixup atom: i</span><br><span class="line">                                    at 647, fixup atom: m</span><br><span class="line">                                    at 652, fixup atom: n</span><br><span class="line">                                    at 663, fixup atom: n</span><br><span class="line">                                    at 674, fixup atom: n</span><br><span class="line">                                    at 682, fixup atom: s</span><br><span class="line">                                    at 690, fixup atom: n</span><br><span class="line">                                    at 700, fixup atom: s</span><br><span class="line">                                    at 705, fixup atom: String</span><br><span class="line">                                    at 710, fixup atom: fromCharCode</span><br><span class="line">                                    at 715, fixup atom: Number</span><br><span class="line">                                    at 720, fixup atom: n</span><br><span class="line">                                    at 734, fixup atom: s</span><br><span class="line">                                    at 740, fixup atom: n</span><br><span class="line">                                    at 749, fixup atom: n</span><br><span class="line">                                    at 757, fixup atom: <span class="built_in">print</span></span><br><span class="line">                                    at 762, fixup atom: s</span><br><span class="line">                                  &#125;</span><br><span class="line">                                  debug &#123;</span><br><span class="line">037b:  c2 03 01 2b 00 3c 01 00</span><br><span class="line">       3c 06 3f 3f 30 7b 4e bc</span><br><span class="line">       49 6d 30 2b 2b 8a 80 00</span><br><span class="line">       34 02 3f 4e 8a 4e 5d 53</span><br><span class="line">       5d cb 85 4e 7b 2c 0f 4f</span><br><span class="line">       85 30 2b 3f cb 4e 0d         filename: s</span><br><span class="line">                                  &#125;</span><br><span class="line">                                  cpool &#123;</span><br><span class="line">03aa:  0a                           bigint &#123;</span><br><span class="line">03ab:  00                           &#125;</span><br><span class="line">03ac:  0a                           bigint &#123;</span><br><span class="line">03ad:  24 01                          len=1</span><br><span class="line">03af:  ac                           &#125;</span><br><span class="line">03b0:  0a                           bigint &#123;</span><br><span class="line">03b1:  28 01                          len=1</span><br><span class="line">03b3:  fe                           &#125;</span><br><span class="line">03b4:  0a                           bigint &#123;</span><br><span class="line">03b5:  00                           &#125;</span><br><span class="line">03b6:  0a                           bigint &#123;</span><br><span class="line">03b7:  00                           &#125;</span><br><span class="line">03b8:  0a                           bigint &#123;</span><br><span class="line">03b9:  28 01                          len=1</span><br><span class="line">03bb:  c8                           &#125;</span><br><span class="line">03bc:  0a                           bigint &#123;</span><br><span class="line">03bd:  e8 01 07                       len=7</span><br><span class="line">03c0:  44 b8 90 b5 6b 67 80         &#125;</span><br><span class="line">03c7:  0a                           bigint &#123;</span><br><span class="line">03c8:  e8 01 07                       len=7</span><br><span class="line">03cb:  34 a7 b8 48 7f 8d af         &#125;</span><br><span class="line">03d2:  0a                           bigint &#123;</span><br><span class="line">03d3:  00                           &#125;</span><br><span class="line">03d4:  0a                           bigint &#123;</span><br><span class="line">03d5:  28 01                          len=1</span><br><span class="line">03d7:  fe                           &#125;</span><br><span class="line">03d8:  0a                           bigint &#123;</span><br><span class="line">03d9:  28 01                          len=1</span><br><span class="line">03db:  fe                           &#125;</span><br><span class="line">                                  &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">s:1: <span class="keyword">function</span>: &lt;<span class="built_in">eval</span>&gt;</span><br><span class="line">  locals:</span><br><span class="line">    0: var &lt;ret&gt;</span><br><span class="line">  stack_size: 6</span><br><span class="line">  opcodes:</span><br><span class="line">        check_define_var un,0</span><br><span class="line">        check_define_var sn,0</span><br><span class="line">        check_define_var s,0</span><br><span class="line">        check_define_var i,0</span><br><span class="line">        check_define_var j,0</span><br><span class="line">        check_define_var k,0</span><br><span class="line">        check_define_var l,0</span><br><span class="line">        check_define_var m,0</span><br><span class="line">        check_define_var n,0</span><br><span class="line">        check_define_var i,0</span><br><span class="line">        define_var un,0</span><br><span class="line">        define_var sn,0</span><br><span class="line">        define_var s,0</span><br><span class="line">        define_var i,0</span><br><span class="line">        define_var j,0</span><br><span class="line">        define_var k,0</span><br><span class="line">        define_var l,0</span><br><span class="line">        define_var m,0</span><br><span class="line">        define_var n,0</span><br><span class="line">        define_var i,0</span><br><span class="line">        push_atom_value KCTF2020Q1lelfei</span><br><span class="line">        dup</span><br><span class="line">        put_var un</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_atom_value <span class="string">"********************************"</span></span><br><span class="line">        dup</span><br><span class="line">        put_var sn</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_const8 0: 0n</span><br><span class="line">        dup</span><br><span class="line">        put_var m</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_0 0</span><br><span class="line">        dup</span><br><span class="line">        put_var i</span><br><span class="line">        drop</span><br><span class="line">  163:  get_var i</span><br><span class="line">        get_var un</span><br><span class="line">        get_length</span><br><span class="line">        lt</span><br><span class="line">        if_false8 243</span><br><span class="line">        get_var m</span><br><span class="line">        push_const8 1: 43n</span><br><span class="line">        mul</span><br><span class="line">        dup</span><br><span class="line">        put_var m</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var m</span><br><span class="line">        get_var BigInt</span><br><span class="line">        get_var un</span><br><span class="line">        get_field2 charCodeAt</span><br><span class="line">        get_var i</span><br><span class="line">        call_method 1</span><br><span class="line">        call1 1</span><br><span class="line">        add</span><br><span class="line">        dup</span><br><span class="line">        put_var m</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var i</span><br><span class="line">        post_inc</span><br><span class="line">        put_var i</span><br><span class="line">        drop</span><br><span class="line">        goto8 163</span><br><span class="line">  243:  get_var Number</span><br><span class="line">        get_var m</span><br><span class="line">        push_const8 2: 127n</span><br><span class="line">        mod</span><br><span class="line">        call1 1</span><br><span class="line">        dup</span><br><span class="line">        put_var l</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_const8 3: 0n</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_0 0</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_0 0</span><br><span class="line">        dup</span><br><span class="line">        put_var k</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_0 0</span><br><span class="line">        dup</span><br><span class="line">        put_var i</span><br><span class="line">        drop</span><br><span class="line">  299:  get_var i</span><br><span class="line">        get_var sn</span><br><span class="line">        get_length</span><br><span class="line">        lt</span><br><span class="line">        if_false 644</span><br><span class="line">        get_var sn</span><br><span class="line">        get_field2 charCodeAt</span><br><span class="line">        get_var i</span><br><span class="line">        call_method 1</span><br><span class="line">        dup</span><br><span class="line">        put_var j</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 48</span><br><span class="line">        gte</span><br><span class="line">        dup</span><br><span class="line">        if_false8 363</span><br><span class="line">        drop</span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 57</span><br><span class="line">        lte</span><br><span class="line">  363:  dup</span><br><span class="line">        if_true8 388</span><br><span class="line">        drop</span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 97</span><br><span class="line">        gte</span><br><span class="line">        if_false 644</span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 102</span><br><span class="line">        lte</span><br><span class="line">  388:  if_false 644</span><br><span class="line">        get_var k</span><br><span class="line">        post_inc</span><br><span class="line">        put_var k</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 48</span><br><span class="line">        sub</span><br><span class="line">        dup</span><br><span class="line">        put_var j</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 9</span><br><span class="line">        gt</span><br><span class="line">        if_false8 447</span><br><span class="line">        get_var j</span><br><span class="line">        push_i8 39</span><br><span class="line">        sub</span><br><span class="line">        dup</span><br><span class="line">        put_var j</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">  447:  get_var s</span><br><span class="line">        push_i8 16</span><br><span class="line">        mul</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var s</span><br><span class="line">        get_var j</span><br><span class="line">        add</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var k</span><br><span class="line">        push_2 2</span><br><span class="line">        mod</span><br><span class="line">        push_0 0</span><br><span class="line">        eq</span><br><span class="line">        if_false 629</span><br><span class="line">        get_var s</span><br><span class="line">        get_var l</span><br><span class="line">        xor</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var s</span><br><span class="line">        push_4 4</span><br><span class="line">        sar</span><br><span class="line">        push_i8 9</span><br><span class="line">        gt</span><br><span class="line">        dup</span><br><span class="line">        if_true8 541</span><br><span class="line">        drop</span><br><span class="line">        get_var s</span><br><span class="line">        push_i8 16</span><br><span class="line">        mod</span><br><span class="line">        push_i8 9</span><br><span class="line">        gt</span><br><span class="line">  541:  if_false8 554</span><br><span class="line">        push_const8 4: 0n</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        goto8 644</span><br><span class="line">  554:  get_var s</span><br><span class="line">        push_4 4</span><br><span class="line">        sar</span><br><span class="line">        push_i8 10</span><br><span class="line">        mul</span><br><span class="line">        get_var s</span><br><span class="line">        push_i8 16</span><br><span class="line">        mod</span><br><span class="line">        add</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var n</span><br><span class="line">        push_const8 5: 100n</span><br><span class="line">        mul</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var n</span><br><span class="line">        get_var BigInt</span><br><span class="line">        get_var s</span><br><span class="line">        call1 1</span><br><span class="line">        add</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        push_0 0</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        goto8 629</span><br><span class="line">  629:  get_var i</span><br><span class="line">        post_inc</span><br><span class="line">        put_var i</span><br><span class="line">        drop</span><br><span class="line">        goto16 299</span><br><span class="line">  644:  undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var m</span><br><span class="line">        get_var n</span><br><span class="line">        eq</span><br><span class="line">        if_false8 670</span><br><span class="line">        push_const8 6: 18071254662143010n</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        goto8 679</span><br><span class="line">  670:  push_const8 7: 24706849372394394n</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">  679:  push_empty_string</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        undefined</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">  689:  get_var n</span><br><span class="line">        push_const8 8: 0n</span><br><span class="line">        gt</span><br><span class="line">        if_false8 756</span><br><span class="line">        get_var s</span><br><span class="line">        get_var String</span><br><span class="line">        get_field2 fromCharCode</span><br><span class="line">        get_var Number</span><br><span class="line">        get_var n</span><br><span class="line">        push_const8 9: 127n</span><br><span class="line">        mod</span><br><span class="line">        call1 1</span><br><span class="line">        call_method 1</span><br><span class="line">        add</span><br><span class="line">        dup</span><br><span class="line">        put_var s</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        get_var n</span><br><span class="line">        push_const8 10: 127n</span><br><span class="line">        div</span><br><span class="line">        dup</span><br><span class="line">        put_var n</span><br><span class="line">        put_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        goto8 689</span><br><span class="line">  756:  get_var <span class="built_in">print</span></span><br><span class="line">        get_var s</span><br><span class="line">        call1 1</span><br><span class="line">        set_loc0 0: <span class="string">"&lt;ret&gt;"</span></span><br><span class="line">        <span class="built_in">return</span></span><br><span class="line"></span><br><span class="line">Error...</span><br></pre></td></tr></table></figure>
+
+<p>根据输出信息写出<code>js</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> un,sn,s,i,j,k,l,m,n;</span><br><span class="line">un = <span class="string">"KCTF2020Q1lelfei"</span>;</span><br><span class="line">sn = <span class="string">"********************************"</span>;</span><br><span class="line">m = <span class="number">0n</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;un.length;i++)&#123;</span><br><span class="line">  m = m * <span class="number">43n</span>;</span><br><span class="line">  m = m + BigInt(un.charCodeAt(i));</span><br><span class="line">&#125;</span><br><span class="line">l = <span class="built_in">Number</span>(m%<span class="number">127n</span>);</span><br><span class="line">n = <span class="number">0n</span>;</span><br><span class="line">s = <span class="number">0</span>;</span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;sn.length;i++)&#123;</span><br><span class="line">  j = sn.charCodeAt(i);</span><br><span class="line">  <span class="keyword">if</span>(j &gt;= <span class="number">48</span> &amp;&amp; j &lt;= <span class="number">57</span> || j &gt;= <span class="number">97</span> &amp;&amp; j &lt;= <span class="number">102</span>)&#123;</span><br><span class="line">    k++;</span><br><span class="line">    j = j<span class="number">-48</span>;</span><br><span class="line">    <span class="keyword">if</span>(j&gt;<span class="number">9</span>) j = j<span class="number">-39</span>;</span><br><span class="line">    s = s * <span class="number">16</span>;</span><br><span class="line">    s = s + j;</span><br><span class="line">    <span class="keyword">if</span>(k % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">      s = s ^ l;</span><br><span class="line">      <span class="keyword">if</span>((s &gt;&gt; <span class="number">4</span>) &gt; <span class="number">9</span> || (s % <span class="number">16</span>) &gt; <span class="number">9</span>)&#123;</span><br><span class="line">        n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      s = (s &gt;&gt; <span class="number">4</span>) * <span class="number">10</span> + (s % <span class="number">16</span>);</span><br><span class="line">      n = n * <span class="number">100n</span>;</span><br><span class="line">      n = n + BigInt(s);</span><br><span class="line">      s = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m == n) &#123;</span><br><span class="line">  n = <span class="number">18071254662143010n</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  n = <span class="number">24706849372394394n</span>;</span><br><span class="line">&#125;</span><br><span class="line">s = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">while</span>(n &gt; <span class="number">0n</span>)&#123;</span><br><span class="line">  s = s + <span class="built_in">String</span>.fromCharCode(<span class="built_in">Number</span>(n % <span class="number">127n</span>));</span><br><span class="line">  n = n / <span class="number">127n</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(s)</span><br></pre></td></tr></table></figure>
+
+<p>解出<code>sn</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hex2dec</span><span class="params">(s)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> (s//<span class="number">10</span>)*<span class="number">16</span> + (s % <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sn = <span class="string">""</span></span><br><span class="line">un = <span class="string">'KCTF'</span>*<span class="number">4</span></span><br><span class="line">m = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> un:</span><br><span class="line">    m = m*<span class="number">43</span> + ord(i)</span><br><span class="line">l=m%<span class="number">127</span></span><br><span class="line"><span class="keyword">while</span> m &gt; <span class="number">0</span>:</span><br><span class="line">    s=m%<span class="number">100</span></span><br><span class="line">    m=m//<span class="number">100</span></span><br><span class="line">    sn = <span class="string">"%02x"</span> % (l^hex2dec(s)) + sn</span><br><span class="line">print(sn)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/htb-Impossible-Password.html" rel="prev" title="htb-{Impossible Password}">
+      <i class="fa fa-chevron-left"></i> htb-{Impossible Password}
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Traceback.html" rel="next" title="Traceback writeup">
+      Traceback writeup <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dzxs"
+      src="https://avatars2.githubusercontent.com/u/6087117?s=460&v=4">
+  <p class="site-author-name" itemprop="name">dzxs</p>
+  <div class="site-description" itemprop="description">没有什么是一成不变的，一切[D:\\AV\\]都在变化</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dzxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dzxs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dzxs</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

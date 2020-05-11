@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":"auto","color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="瞎几把记一点Windows小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows-log">
+<meta property="og:url" content="https://blog.d2x3.cn/Windows-log.html">
+<meta property="og:site_name" content="瞎几把XI[U]E">
+<meta property="og:description" content="瞎几把记一点Windows小知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.d2x3.cn/Windows-log/1.png">
+<meta property="article:published_time" content="2018-09-14T07:36:42.000Z">
+<meta property="article:modified_time" content="2018-09-14T07:36:42.000Z">
+<meta property="article:author" content="dzxs">
+<meta property="article:tag" content="powershell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.d2x3.cn/Windows-log/1.png">
+
+<link rel="canonical" href="https://blog.d2x3.cn/Windows-log.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows-log | 瞎几把XI[U]E</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">瞎几把XI[U]E</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">XIA几把学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">45</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-mikutap">
+
+    <a href="/mikutap/index.html" rel="section"><i class="fa fa-fw fa-music"></i>mikutap</a>
+
+  </li>
+        <li class="menu-item menu-item-看电视">
+
+    <a href="/TV/index.html" rel="section"><i class="fa fa-fw fa-backward"></i>看电视</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dzxs" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/Windows-log.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/6087117?s=460&v=4">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows-log
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-14 15:36:42" itemprop="dateCreated datePublished" datetime="2018-09-14T15:36:42+08:00">2018-09-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote class="blockquote-center">
+            <p>瞎几把记一点Windows小知识</p>
+
+          </blockquote>
+<a id="more"></a>
+<h2 id="scoop"><a href="#scoop" class="headerlink" title="scoop"></a>scoop</h2><p> <a href="https://github.com/lukesampson/scoop" target="_blank" rel="noopener">https://github.com/lukesampson/scoop</a></p>
+<p>windows 的命令行安装程序管理工具</p>
+<h3 id="scoop-dzxs"><a href="#scoop-dzxs" class="headerlink" title="scoop-dzxs"></a>scoop-dzxs</h3><p>我的bucket <a href="https://github.com/dzxs/scoop-dzxs" target="_blank" rel="noopener">https://github.com/dzxs/scoop-dzxs</a></p>
+<h4 id="安装-scoop-到自定义目录"><a href="#安装-scoop-到自定义目录" class="headerlink" title="安装 scoop 到自定义目录"></a>安装 scoop 到自定义目录</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="type">environment</span>]::setEnvironmentVariable(<span class="string">'SCOOP'</span>,<span class="string">'D:\Applications\Scoop'</span>,<span class="string">'User'</span>)</span><br><span class="line"><span class="variable">$env:SCOOP</span>=<span class="string">'D:\Applications\Scoop'</span></span><br><span class="line">iex (<span class="built_in">new-object</span> net.webclient).downloadstring(<span class="string">'https://raw.githubusercontent.com/lukesampson/scoop/master/bin/install.ps1'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加scoop-dzxs"><a href="#添加scoop-dzxs" class="headerlink" title="添加scoop-dzxs"></a>添加scoop-dzxs</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop bucket add dzxs https://github.com/dzxs/scoop<span class="literal">-dzxs</span></span><br><span class="line">scoop bucket list <span class="comment"># -&gt; you should see 'dzxs'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="记一下"><a href="#记一下" class="headerlink" title="记一下"></a>记一下</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop cache rm * <span class="comment"># 清空所有缓存</span></span><br><span class="line">scoop cleanup * <span class="comment"># 删除所有app的旧版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="powershell"><a href="#powershell" class="headerlink" title="powershell"></a>powershell</h2><h3 id="Invoke-WebRequest-下载文件"><a href="#Invoke-WebRequest-下载文件" class="headerlink" title="Invoke-WebRequest 下载文件"></a>Invoke-WebRequest 下载文件</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> https://gist.githubusercontent.com/dzxs/f78262f38190cc499540f12d5c245822/raw/<span class="number">37</span>abe4b11d08590282b16aae55096bdbeae0faf5/OpenWithSublimeText3.bat <span class="literal">-OutFile</span> OpenWithSublimeText3.bat</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> scoop install sudo <span class="comment">#类似linux下的sudo</span></span><br><span class="line">Installing <span class="string">'sudo'</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) [<span class="number">64</span><span class="type">bit</span>]</span><br><span class="line">sudo.ps1 (<span class="number">2.0</span> KB) [===========================================================================================] <span class="number">100</span>%</span><br><span class="line">Checking hash of sudo.ps1 ... ok.</span><br><span class="line">Linking D:\apps\Scoop\apps\sudo\current =&gt; D:\apps\Scoop\apps\sudo\<span class="number">0.2017</span>.<span class="number">03.24</span></span><br><span class="line">Creating shim <span class="keyword">for</span> <span class="string">'sudo'</span>.</span><br><span class="line"><span class="string">'sudo'</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) was installed successfully!</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> sudo .\OpenWithSublimeText3.bat</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+
+<p>这个下载的文件可以将sublime-text添加到右键</p>
+<img src="/Windows-log/1.png" class="">
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/powershell/" rel="tag"># powershell</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/winre.html" rel="prev" title="恢复winre">
+      <i class="fa fa-chevron-left"></i> 恢复winre
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Windows%E5%AE%89%E8%A3%85Linux%E5%AD%90%E7%B3%BB%E7%BB%9F.html" rel="next" title="Windows安装Linux子系统">
+      Windows安装Linux子系统 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scoop"><span class="nav-number">1.</span> <span class="nav-text">scoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scoop-dzxs"><span class="nav-number">1.1.</span> <span class="nav-text">scoop-dzxs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-scoop-到自定义目录"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装 scoop 到自定义目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加scoop-dzxs"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加scoop-dzxs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记一下"><span class="nav-number">1.1.3.</span> <span class="nav-text">记一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#powershell"><span class="nav-number">2.</span> <span class="nav-text">powershell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Invoke-WebRequest-下载文件"><span class="nav-number">2.1.</span> <span class="nav-text">Invoke-WebRequest 下载文件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dzxs"
+      src="https://avatars2.githubusercontent.com/u/6087117?s=460&v=4">
+  <p class="site-author-name" itemprop="name">dzxs</p>
+  <div class="site-description" itemprop="description">没有什么是一成不变的，一切[D:\\AV\\]都在变化</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dzxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dzxs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-code"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dzxs</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

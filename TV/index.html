@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>看电视</title>
+  <style type="text/css">
+  body{margin-left:0;margin-top:0;margin-right:0;margin-bottom:0;overflow:hidden;}
+  .player{width:100%;height:580px;background: #eeeeee;text-align: center;}
+  .player-footer{margin-top:1em;}
+  .player-footer>input{width:25%;font-size:1em;}
+  .player-footer>button{font-size:1em;margin-left:1em;}
+</style>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="player">
+		<iframe id="player-frame" width="80%" height="100%" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+		<div class="player-footer">
+			<input type="text" id="url" placeholder="https://v.qq.com/x/cover/rpup19lfbuf2skc/n0028y71prr.html" value="https://v.qq.com/x/cover/rpup19lfbuf2skc/n0028y71prr.html"><button id="btn">解析</button>
+		</div>
+
+	</div>
+
+<script type="text/javascript">
+	$("#btn").click(function() {
+		let url = "https://api.bbbbbb.me/jx/?url=" + $("#url").val();
+		$("#player-frame").attr("src", url);
+	});
+	
+</script>
+</body>
+
+</html>

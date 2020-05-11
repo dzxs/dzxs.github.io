@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /page/
+Allow: /tags/
+Allow: /mikutap/
+Allow: /tv/
+Sitemap: https://blog.d2x3.cn/sitemap.xml
+Sitemap: https://blog.d2x3.cn/baidusitemap.xml
