@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.d2x3.cn/manager-ssh-sessions-from-config.html</loc>
+    
+    <lastmod>2020-05-12T03:08:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.d2x3.cn/images/manifest.json</loc>
+    
+    <lastmod>2020-05-11T18:13:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.d2x3.cn/Admirer.html</loc>
+    
+    <lastmod>2020-05-11T01:58:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.d2x3.cn/nvm.html</loc>
     
     <lastmod>2020-05-11T01:36:49.000Z</lastmod>
@@ -243,13 +264,6 @@
     <loc>https://blog.d2x3.cn/how-to-make-a-bootable-USB-installation-drive-on-windows.html</loc>
     
     <lastmod>2018-10-08T16:54:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.d2x3.cn/manager-ssh-sessions-from-config.html</loc>
-    
-    <lastmod>2018-09-27T03:08:36.000Z</lastmod>
     
   </url>
   
