@@ -144,12 +144,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">48</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">49</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">52</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -226,6 +226,92 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/git-proxy.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/git-proxy.html" class="post-title-link" itemprop="url">git-proxy</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 22:02:16" itemprop="dateCreated datePublished" datetime="2019-09-08T22:02:16+08:00">2019-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>342</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有时候在github或gitlab这些仓库clone项目，因为被墙了，没有使用代理阿之类的因由，下不下来</p>
+<p>类似这些</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">remote: Compressing objects: 100% (4455/4455), <span class="keyword">done</span>.</span><br><span class="line">Timeout, server gitlab.com not responding. MiB | 7.00 KiB/s</span><br><span class="line">fatal: the remote end hung up unexpectedly</span><br><span class="line">fatal: early EOF</span><br></pre></td></tr></table></figure>
+
+<p>而git clone 的时候用的是.git结尾的连接，这个时候就需要配置一下ssh代理访问这个仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim ~/.ssh/config</span><br><span class="line">Host gitlab.com</span><br><span class="line"> HostName gitlab.com</span><br><span class="line"> Port 22</span><br><span class="line"> ProxyCommand nc -v -x 127.0.0.1:1080 %h %p</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1095,94 +1181,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/golang-build-stuff.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/golang-build-stuff.html" class="post-title-link" itemprop="url">golang 编译环境</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-07 14:43:50" itemprop="dateCreated datePublished" datetime="2019-01-07T14:43:50+08:00">2019-01-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>484</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="debian-ubuntu-kali-parrot"><a href="#debian-ubuntu-kali-parrot" class="headerlink" title="debian (ubuntu kali parrot)"></a>debian (ubuntu kali parrot)</h1><p>费事改的话 <code>$GOPATH</code> 默认是<code>~/go</code>,项目就放在<code>~/go/src/github.com/XXX/project_name/</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/golang-build-stuff.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1254,7 +1252,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1267,7 +1265,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1308,12 +1306,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">190k</span>
+    <span title="站点总字数">217k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">3:17</span>
 </div>
 
         

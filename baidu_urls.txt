@@ -1,3 +1,4 @@
+https://blog.d2x3.cn/Nest.html
 https://blog.d2x3.cn/Admirer.html
 https://blog.d2x3.cn/nvm.html
 https://blog.d2x3.cn/Traceback.html
@@ -12,4 +13,3 @@ https://blog.d2x3.cn/msf-install.html
 https://blog.d2x3.cn/htb-I-know-Mag1k.html
 https://blog.d2x3.cn/Hack-the-box.html
 https://blog.d2x3.cn/android-device-monitor-stuck-in-macos.html
-https://blog.d2x3.cn/install-macos-10-14-mojave-in-virtualbox.html
