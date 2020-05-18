@@ -1,3 +1,4 @@
+https://blog.d2x3.cn/ServMon.html
 https://blog.d2x3.cn/Sauna.html
 https://blog.d2x3.cn/Remote.html
 https://blog.d2x3.cn/Nest.html
@@ -12,4 +13,3 @@ https://blog.d2x3.cn/sre-tools.html
 https://blog.d2x3.cn/select-the-identify-private-key-for-git.html
 https://blog.d2x3.cn/hack-skill.html
 https://blog.d2x3.cn/msf-install.html
-https://blog.d2x3.cn/htb-I-know-Mag1k.html
