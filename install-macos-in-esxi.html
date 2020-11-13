@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/pace/1.0.2/themes/black/pace-theme-minimal.min.css">
+  <script src="https://cdn.staticfile.org/pace/1.0.2/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="下载镜像https:&#x2F;&#x2F;apps.apple.com&#x2F;us&#x2F;app&#x2F;macos-catalina&#x2F;id1466841314?l&#x3D;en-us&amp;mt&#x3D;12 转换格式hdiutil create -o ~&#x2F;Desktop&#x2F;Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+Jhdiutil attach ~&#x2F;Desktop&#x2F;Catalina.dmg -n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install macos in esxi">
+<meta property="og:url" content="https://blog.d2x3.cn/install-macos-in-esxi.html">
+<meta property="og:site_name" content="瞎几把XI[U]E">
+<meta property="og:description" content="下载镜像https:&#x2F;&#x2F;apps.apple.com&#x2F;us&#x2F;app&#x2F;macos-catalina&#x2F;id1466841314?l&#x3D;en-us&amp;mt&#x3D;12 转换格式hdiutil create -o ~&#x2F;Desktop&#x2F;Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+Jhdiutil attach ~&#x2F;Desktop&#x2F;Catalina.dmg -n">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-04T09:11:40.000Z">
+<meta property="article:modified_time" content="2020-11-04T09:11:40.000Z">
+<meta property="article:author" content="dzxs">
+<meta property="article:tag" content="devlopment">
+<meta property="article:tag" content=" programming">
+<meta property="article:tag" content=" c&#x2F;c++">
+<meta property="article:tag" content=" ">
+<meta property="article:tag" content="rust">
+<meta property="article:tag" content=" go">
+<meta property="article:tag" content=" java">
+<meta property="article:tag" content=" kotlin">
+<meta property="article:tag" content=" python">
+<meta property="article:tag" content=" Dalvik">
+<meta property="article:tag" content=" php">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.d2x3.cn/install-macos-in-esxi.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>install macos in esxi | 瞎几把XI[U]E</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100758199-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100758199-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">瞎几把XI[U]E</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">XIA几把学</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-mikutap">
+
+    <a href="/mikutap/index.html" rel="section"><i class="music fa-fw"></i>mikutap</a>
+
+  </li>
+        <li class="menu-item menu-item-看电视">
+
+    <a href="/TV/index.html" rel="section"><i class="backward fa-fw"></i>看电视</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/dzxs" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/install-macos-in-esxi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          install macos in esxi
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-04 17:11:40" itemprop="dateCreated datePublished" datetime="2020-11-04T17:11:40+08:00">2020-11-04</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12" target="_blank" rel="noopener">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
+<h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>hdiutil create -o ~/Desktop/Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+J<br>hdiutil attach ~/Desktop/Catalina.dmg -noverify -mountpoint /Volumes/install_build<br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia –volume /Volumes/install_build –nointeraction<br>hdiutil detach “/Volumes/Install macOS Catalina”<br>hdiutil convert ~/Desktop/Catalina.dmg -format UDTO -o ~/Desktop/Catalina.cdr<br>mv ~/Desktop/Catalina.cdr ~/Desktop/Catalina.iso</p>
+<h2 id="直通显卡"><a href="#直通显卡" class="headerlink" title="直通显卡"></a>直通显卡</h2><p>hypervisor.cpuid.v0 = “FALSE”</p>
+<p>第一次设置要重启esxi</p>
+<h2 id="直通usb鼠标键盘"><a href="#直通usb鼠标键盘" class="headerlink" title="直通usb鼠标键盘"></a>直通usb鼠标键盘</h2><p>lsusb -v | grep -E ‘(^Bus|HID)’</p>
+<p>vi /etc/vmware/config</p>
+<p>usb.generic.allowHID = “TRUE”<br>usb.quirks.device0 = “0x24ae:0x2003 allow”<br>usb.quirks.device1 = “0x413c:0x2107 allow”<br>usb.quirks.device2 = “0x093a:0x2510 allow”</p>
+<p>vi /bootbank/boot.cfg<br>CONFIG./USB/quirks=0x24ae:0x2003::0xffff:UQ_KBD_IGNORE:0x413c:0x2107::0xffff:UQ_KBD_IGNORE:0x093a:0x2510::0xffff:UQ_KBD_IGNORE</p>
+<p>第一次设置要重启esxi</p>
+<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
+<p>esxcli software sources profile list -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip<br>esxcli software profile update -p ESXi-7.0.0-15843807-standard -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip –dry-run</p>
+<p>esxcli software profile update –allow-downgrades</p>
+<h2 id="esxi-挂载upan"><a href="#esxi-挂载upan" class="headerlink" title="esxi 挂载upan"></a>esxi 挂载upan</h2><p>/etc/init.d/usbarbitrator stop<br>esxcli storage core device list | grep -i usb<br>esxcli storage filesystem list</p>
+<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a href="https://github.com/shanyungyang/esxi-unlocker" target="_blank" rel="noopener">https://github.com/shanyungyang/esxi-unlocker</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/h4ck_stuff">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Cascade.html" rel="prev" title="Cascade">
+      <i class="fa fa-chevron-left"></i> Cascade
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/proxmox-ve-installation.html" rel="next" title="Proxmox VE 配置记录">
+      Proxmox VE 配置记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载镜像"><span class="nav-number">1.</span> <span class="nav-text">下载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换格式"><span class="nav-number">2.</span> <span class="nav-text">转换格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直通显卡"><span class="nav-number">3.</span> <span class="nav-text">直通显卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直通usb鼠标键盘"><span class="nav-number">4.</span> <span class="nav-text">直通usb鼠标键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-upgrade"><span class="nav-number">5.</span> <span class="nav-text">esxi upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-挂载upan"><span class="nav-number">6.</span> <span class="nav-text">esxi 挂载upan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi解锁"><span class="nav-number">7.</span> <span class="nav-text">esxi解锁</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dzxs"
+      src="/images/android-chrome-384x384.png">
+  <p class="site-author-name" itemprop="name">dzxs</p>
+  <div class="site-description" itemprop="description">没有什么是一成不变的，一切[D:\\AV\\]都在变化</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dzxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dzxs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dzxs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">282k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:16</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://blog.d2x3.cn/install-macos-in-esxi.html',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '9052071ab32398f21451',
+      clientSecret: '5aad0e33e9aab7752cc9aeba7644e08753051bad',
+      repo        : 'dzxs.github.io',
+      owner       : 'dzxs',
+      admin       : ['dzxs'],
+      id          : 'fb48198a83898d70f1158d81ea0c6484',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

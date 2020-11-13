@@ -144,17 +144,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">52</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">60</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -226,6 +226,422 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/pixel2%E5%AE%89%E8%A3%85Android11-%E9%80%9A%E8%BF%87magisk-root.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/pixel2%E5%AE%89%E8%A3%85Android11-%E9%80%9A%E8%BF%87magisk-root.html" class="post-title-link" itemprop="url">pixel2安装Android11&&通过magisk root</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 20:15:16" itemprop="dateCreated datePublished" datetime="2020-11-13T20:15:16+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>下载images</li>
+</ol>
+<p><a href="https://developers.google.com/android/images#walleye" target="_blank" rel="noopener">镜像列表</a><br><a href="https://dl.google.com/dl/android/aosp/walleye-rp1a.201005.004-factory-78b8d156.zip" target="_blank" rel="noopener">镜像地址</a></p>
+<ol start="2">
+<li>备份</li>
+</ol>
+<p>备份数据</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb backup -f all -all -apk -nosystem</span><br></pre></td></tr></table></figure>
+
+<p>备份apk</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> APP <span class="keyword">in</span> $(adb shell pm list packages -3)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  APP=$( <span class="built_in">echo</span> <span class="variable">$&#123;APP&#125;</span> | sed <span class="string">"s/^package://"</span>)</span><br><span class="line">  adb backup -f <span class="variable">$&#123;APP&#125;</span>.backup <span class="variable">$&#123;APP&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>刷机</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">./flash-all.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>root</li>
+</ol>
+<p>先安装翻墙软件(如果是在大陆)和<code>magisk manager</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装翻墙软件</span></span><br><span class="line">adb install io.github.trojan_gfw.igniter.apk</span><br><span class="line"><span class="comment"># 安装magisk manager</span></span><br><span class="line">adb install com.topjohnwu.magisk.apk</span><br></pre></td></tr></table></figure>
+
+<p>手机上打开<code>magisk manager</code>,选择<code>测试通道</code></p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> 很关键,就当前而言,稳定通道无法开机,会去到<code>bootloader</code>,显示错误信息<code>slot unbootable load error</code>,嗯~我试过了</p>
+</blockquote>
+<blockquote>
+<p>如果在<code>flash-all.sh</code>刷机那一步去掉了<code>-w</code>,也就是不删除数据,而之前又安装有<code>magisk</code>和一些不兼容modules,可能开机会一直循环在谷歌图标那里,这是<a href="https://github.com/topjohnwu/Magisk/issues/3157" target="_blank" rel="noopener">相关issues</a>. issues里提到删除<code>/data/adb/modules</code>文件夹,我没有<code>TWRP</code>,所以直接在谷歌图标循环的时候,<code>adb shell</code>, <code>su</code>进去删除的,但是没有用.嗯~我也试过了,所以才备份数据重新刷机的.</p>
+</blockquote>
+<blockquote>
+<p>在<code>magisk manager</code>界面,最新显示<code>无法获取</code>,请检查自己的网络环境,可能需要翻墙</p>
+</blockquote>
+<p>解压<code>image-walleye-rp1a.201005.004.zip</code>,找到<code>boot.img</code>,放到手机上<code>/sdcard/Download</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb push boot.img /sdcard/Download</span><br></pre></td></tr></table></figure>
+
+<p>在<code>magisk manager</code>界面,点 <code>Magisk</code>旁边的<code>安装</code>,选择<code>选择并修补一个文件</code>,选中<code>boot.img</code>,点<code>开始</code></p>
+<p>将生成的<code>magisk_patched.img</code>拉回电脑</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb pull /sdcard/Download/magisk_patched.img</span><br></pre></td></tr></table></figure>
+
+<p>重启到bootloader,刷入<code>magisk_patched.img</code></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">adb</span> <span class="string">reboot bootloader</span></span><br><span class="line"><span class="attr">fastboot</span> <span class="string">flash boot magisk_patched.img</span></span><br><span class="line"><span class="attr">fastboot</span> <span class="string">reboot</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>恢复备份</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb install &lt;app&gt;.apk</span><br><span class="line">adb restore all</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/proxmox-ve-installation.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/proxmox-ve-installation.html" class="post-title-link" itemprop="url">Proxmox VE 配置记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-07 17:24:56" itemprop="dateCreated datePublished" datetime="2020-11-07T17:24:56+08:00">2020-11-07</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装-Proxmox-VE"><a href="#安装-Proxmox-VE" class="headerlink" title="安装 Proxmox VE"></a>安装 <code>Proxmox VE</code></h2><ul>
+<li><a href="https://pve.proxmox.com/wiki/Installation" target="_blank" rel="noopener">文档</a></li>
+</ul>
+<p>有一张ssd盘和3张hdd盘,都是插在raid 控制器上,经过一番google、百度,希望使用zfs,所以要将raid控制器的raid模式改成hba模式.</p>
+<p>计划将proxmox安装在ssd盘,3张hdd盘做Striped Vdev ZPool(raid0)</p>
+<h2 id="安装macOS"><a href="#安装macOS" class="headerlink" title="安装macOS"></a>安装macOS</h2><ul>
+<li><a href="https://github.com/kholia/OSX-KVM" target="_blank" rel="noopener">OSX-KVM</a></li>
+<li><a href="https://github.com/thenickdude/KVM-Opencore" target="_blank" rel="noopener">KVM-Opencore</a></li>
+</ul>
+<p>编辑 <code>vim.tiny /etc/pve/qemu-server/101.conf</code></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">args: -device isa-applesmc,<span class="attribute">osk</span>=<span class="string">"ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"</span> -smbios <span class="attribute">type</span>=2 -devi</span><br><span class="line">ce usb-kbd,<span class="attribute">bus</span>=ehci.0,port=2 -cpu host,<span class="attribute">kvm</span>=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc</span><br></pre></td></tr></table></figure>
+
+<p>终端输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"options kvm ignore_msrs=Y"</span> &gt;&gt; /etc/modprobe.d/kvm.conf &amp;&amp; update-initramfs -k all -u</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/module/kvm/parameters/ignore_msrs</span><br></pre></td></tr></table></figure>
+
+<p>OSK值</p>
+<p><code>ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc</code></p>
+<h2 id="显卡直通"><a href="#显卡直通" class="headerlink" title="显卡直通"></a>显卡直通</h2><p>10de:1287,10de:0e0f</p>
+<p>加载vfio模块</p>
+<p>编辑 <code>/etc/modules</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vfio</span><br><span class="line">vfio_iommu_type1</span><br><span class="line">vfio_pci</span><br><span class="line">vfio_virqfd</span><br></pre></td></tr></table></figure>
+
+<p>屏蔽gpu驱动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist radeon"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist nouveau"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist nvidia"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br></pre></td></tr></table></figure>
+
+<p>开启IOMMU</p>
+<p>编辑 <code>/etc/kernel/cmdline</code> (编辑<code>/etc/default/grub</code>里的<code>GRUB_CMDLINE_LINUX_DEFAULT</code>没有启作用)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">intel_iommu&#x3D;on vfio-pci.ids&#x3D;&lt;vendor_id&gt;:&lt;device_id&gt;,&lt;vendor_id&gt;:&lt;device_id&gt; disable_vga&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>更新、重启</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-initramfs -u -k all</span><br><span class="line">pve-efiboot-tool refresh</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>验证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># kernel参数</span></span><br><span class="line">cat /proc/cmdline</span><br><span class="line"><span class="comment"># IOMMU</span></span><br><span class="line">dmesg |grep -E <span class="string">"DMAR|IOMMU"</span></span><br><span class="line"><span class="comment"># vfio</span></span><br><span class="line">dmesg |grep -i vfio</span><br><span class="line"><span class="comment"># vfio-pci Kernel driver in use: vfio-pci</span></span><br><span class="line">lspci -nnk</span><br><span class="line"><span class="comment"># IOMMU groups</span></span><br><span class="line">find /sys/kernel/iommu_groups/ -<span class="built_in">type</span> l</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/install-macos-in-esxi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/install-macos-in-esxi.html" class="post-title-link" itemprop="url">install macos in esxi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-04 17:11:40" itemprop="dateCreated datePublished" datetime="2020-11-04T17:11:40+08:00">2020-11-04</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12" target="_blank" rel="noopener">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
+<h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>hdiutil create -o ~/Desktop/Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+J<br>hdiutil attach ~/Desktop/Catalina.dmg -noverify -mountpoint /Volumes/install_build<br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia –volume /Volumes/install_build –nointeraction<br>hdiutil detach “/Volumes/Install macOS Catalina”<br>hdiutil convert ~/Desktop/Catalina.dmg -format UDTO -o ~/Desktop/Catalina.cdr<br>mv ~/Desktop/Catalina.cdr ~/Desktop/Catalina.iso</p>
+<h2 id="直通显卡"><a href="#直通显卡" class="headerlink" title="直通显卡"></a>直通显卡</h2><p>hypervisor.cpuid.v0 = “FALSE”</p>
+<p>第一次设置要重启esxi</p>
+<h2 id="直通usb鼠标键盘"><a href="#直通usb鼠标键盘" class="headerlink" title="直通usb鼠标键盘"></a>直通usb鼠标键盘</h2><p>lsusb -v | grep -E ‘(^Bus|HID)’</p>
+<p>vi /etc/vmware/config</p>
+<p>usb.generic.allowHID = “TRUE”<br>usb.quirks.device0 = “0x24ae:0x2003 allow”<br>usb.quirks.device1 = “0x413c:0x2107 allow”<br>usb.quirks.device2 = “0x093a:0x2510 allow”</p>
+<p>vi /bootbank/boot.cfg<br>CONFIG./USB/quirks=0x24ae:0x2003::0xffff:UQ_KBD_IGNORE:0x413c:0x2107::0xffff:UQ_KBD_IGNORE:0x093a:0x2510::0xffff:UQ_KBD_IGNORE</p>
+<p>第一次设置要重启esxi</p>
+<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
+<p>esxcli software sources profile list -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip<br>esxcli software profile update -p ESXi-7.0.0-15843807-standard -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip –dry-run</p>
+<p>esxcli software profile update –allow-downgrades</p>
+<h2 id="esxi-挂载upan"><a href="#esxi-挂载upan" class="headerlink" title="esxi 挂载upan"></a>esxi 挂载upan</h2><p>/etc/init.d/usbarbitrator stop<br>esxcli storage core device list | grep -i usb<br>esxcli storage filesystem list</p>
+<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a href="https://github.com/shanyungyang/esxi-unlocker" target="_blank" rel="noopener">https://github.com/shanyungyang/esxi-unlocker</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/Cascade.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Cascade.html" class="post-title-link" itemprop="url">Cascade</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-19 09:21:21" itemprop="dateCreated datePublished" datetime="2020-05-19T09:21:21+08:00">2020-05-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hackthebox/" itemprop="url" rel="index"><span itemprop="name">hackthebox</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hackthebox/retired/" itemprop="url" rel="index"><span itemprop="name">retired</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hackthebox/retired/active/" itemprop="url" rel="index"><span itemprop="name">active</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>49</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <img width="80%" src="title/example.png"/>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Cascade.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -781,367 +1197,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/nvm.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/nvm.html" class="post-title-link" itemprop="url">node version manager</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-11 09:36:49" itemprop="dateCreated datePublished" datetime="2020-05-11T09:36:49+08:00">2020-05-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>492</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="nvm管理node版本"><a href="#nvm管理node版本" class="headerlink" title="nvm管理node版本"></a>nvm管理node版本</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-
-<p>添加以下内容到<code>~/.zshrc</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export NVM_DIR&#x3D;&quot;$HOME&#x2F;.nvm&quot;</span><br><span class="line">[ -s &quot;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;nvm&#x2F;nvm.sh&quot; ] &amp;&amp; . &quot;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;nvm&#x2F;nvm.sh&quot;  # This loads nvm</span><br><span class="line">[ -s &quot;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;nvm&#x2F;etc&#x2F;bash_completion.d&#x2F;nvm&quot; ] &amp;&amp; . &quot;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;nvm&#x2F;etc&#x2F;bash_completion.d&#x2F;nvm&quot;  # This loads nvm bash_completion</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/Traceback.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Traceback.html" class="post-title-link" itemprop="url">Traceback</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-11 06:34:48" itemprop="dateCreated datePublished" datetime="2020-05-11T06:34:48+08:00">2020-05-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/" itemprop="url" rel="index"><span itemprop="name">hackthebox</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/active/" itemprop="url" rel="index"><span itemprop="name">active</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Traceback
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Traceback.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html" class="post-title-link" itemprop="url">kctf2020-{第三题 寻踪觅源}</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-19 11:26:40" itemprop="dateCreated datePublished" datetime="2020-04-19T11:26:40+08:00">2020-04-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kctf2020/" itemprop="url" rel="index"><span itemprop="name">kctf2020</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>14 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>Ghidra</code> -&gt; <code>Search</code> -&gt; <code>For Strings</code></p>
-<p>看到<code>quickjs</code>, google that.</p>
-<p>编译 运行 <code>quickjs</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$ </span><span class="bash">git <span class="built_in">clone</span> https://github.com/horhof/quickjs.git -b 20200119 --depth 1</span></span><br><span class="line">cd quickjs</span><br><span class="line"><span class="meta">$ </span><span class="bash">make</span></span><br><span class="line"><span class="meta">$ </span><span class="bash"><span class="built_in">echo</span> <span class="string">"console.log('hello')"</span> &gt; ctf.js</span></span><br><span class="line"><span class="meta">$ </span><span class="bash">./qjsc -e -o ctf.c ctf.js</span></span><br><span class="line"><span class="meta">$ </span><span class="bash">cc ctf.c libquickjs.lto.a -o ctf</span></span><br><span class="line"><span class="meta">$ </span><span class="bash">./ctf</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-
-<p>check <code>ctf.c</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/kctf2020-%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%AF%BB%E8%B8%AA%E8%A7%85%E6%BA%90.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/htb-Impossible-Password.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/htb-Impossible-Password.html" class="post-title-link" itemprop="url">Impossible Password</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 08:45:22" itemprop="dateCreated datePublished" datetime="2020-04-18T08:45:22+08:00">2020-04-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/" itemprop="url" rel="index"><span itemprop="name">hackthebox</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/challenges/" itemprop="url" rel="index"><span itemprop="name">challenges</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Impossible Password Reversing Challenges
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/htb-Impossible-Password.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1213,20 +1268,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">61</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1267,12 +1322,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">278k</span>
+    <span title="站点总字数">282k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:13</span>
+    <span title="站点阅读时长">4:16</span>
 </div>
 
         

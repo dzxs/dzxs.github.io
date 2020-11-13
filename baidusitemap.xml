@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.d2x3.cn/pixel2%E5%AE%89%E8%A3%85Android11-%E9%80%9A%E8%BF%87magisk-root.html</loc>
+    <lastmod>2020-11-13</lastmod>
+  </url>  <url>
+    <loc>https://blog.d2x3.cn/proxmox-ve-installation.html</loc>
+    <lastmod>2020-11-07</lastmod>
+  </url>  <url>
+    <loc>https://blog.d2x3.cn/install-macos-in-esxi.html</loc>
+    <lastmod>2020-11-04</lastmod>
+  </url>  <url>
+    <loc>https://blog.d2x3.cn/Cascade.html</loc>
+    <lastmod>2020-05-19</lastmod>
+  </url>  <url>
     <loc>https://blog.d2x3.cn/ServMon.html</loc>
     <lastmod>2020-05-18</lastmod>
   </url>  <url>
@@ -151,10 +163,10 @@
     <loc>https://blog.d2x3.cn/hi.html</loc>
     <lastmod>2017-09-17</lastmod>
   </url>  <url>
-    <loc>https://blog.d2x3.cn/git-log.html</loc>
+    <loc>https://blog.d2x3.cn/java-log.html</loc>
     <lastmod>2017-08-17</lastmod>
   </url>  <url>
-    <loc>https://blog.d2x3.cn/java-log.html</loc>
+    <loc>https://blog.d2x3.cn/git-log.html</loc>
     <lastmod>2017-08-17</lastmod>
   </url>
 </urlset>
