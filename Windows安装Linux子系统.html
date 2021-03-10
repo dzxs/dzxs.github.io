@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -25,12 +25,12 @@
     var CONFIG = {"hostname":"blog.d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="Kali Linux开始1. 管理员身份运行Powershell2.  启用 适用于 Linux 的 Windows 子系统">
+  <meta name="description" content="Kali Linux开始1. 管理员身份运行Powershell2.  启用 适用于 Linux 的 Windows 子系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows安装Linux子系统">
 <meta property="og:url" content="https://blog.d2x3.cn/Windows%E5%AE%89%E8%A3%85Linux%E5%AD%90%E7%B3%BB%E7%BB%9F.html">
 <meta property="og:site_name" content="瞎几把XI[U]E">
-<meta property="og:description" content="Kali Linux开始1. 管理员身份运行Powershell2.  启用 适用于 Linux 的 Windows 子系统">
+<meta property="og:description" content="Kali Linux开始1. 管理员身份运行Powershell2.  启用 适用于 Linux 的 Windows 子系统">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-09-19T04:13:11.000Z">
 <meta property="article:modified_time" content="2018-09-19T04:13:11.000Z">
@@ -139,17 +139,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -286,17 +286,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Kali-Linux"><a href="#Kali-Linux" class="headerlink" title="Kali Linux"></a>Kali Linux</h2><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="1-管理员身份运行Powershell"><a href="#1-管理员身份运行Powershell" class="headerlink" title="1. 管理员身份运行Powershell"></a>1. 管理员身份运行Powershell</h4><h4 id="2-启用-适用于-Linux-的-Windows-子系统"><a href="#2-启用-适用于-Linux-的-Windows-子系统" class="headerlink" title="2.  启用 适用于 Linux 的 Windows 子系统"></a>2.  启用 适用于 Linux 的 Windows 子系统</h4><a id="more"></a>
+        <h2 id="Kali-Linux"><a href="#Kali-Linux" class="headerlink" title="Kali Linux"></a>Kali Linux</h2><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="1-管理员身份运行Powershell"><a href="#1-管理员身份运行Powershell" class="headerlink" title="1. 管理员身份运行Powershell"></a>1. 管理员身份运行Powershell</h4><h4 id="2-启用-适用于-Linux-的-Windows-子系统"><a href="#2-启用-适用于-Linux-的-Windows-子系统" class="headerlink" title="2.  启用 适用于 Linux 的 Windows 子系统"></a>2.  启用 适用于 Linux 的 Windows 子系统</h4><span id="more"></span>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Enable-WindowsOptionalFeature</span> <span class="literal">-Online</span> <span class="literal">-FeatureName</span> Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="3-重启"><a href="#3-重启" class="headerlink" title="3. 重启"></a>3. 重启</h4><h4 id="4-下载"><a href="#4-下载" class="headerlink" title="4. 下载"></a>4. 下载</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> https://aka.ms/wsl<span class="literal">-kali</span><span class="literal">-linux</span> <span class="literal">-OutFile</span> Kali.appx <span class="literal">-UseBasicParsing</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="5-打开Kali-appx-进行安装"><a href="#5-打开Kali-appx-进行安装" class="headerlink" title="5. 打开Kali.appx 进行安装"></a>5. 打开Kali.appx 进行安装</h4><h4 id="6-启动"><a href="#6-启动" class="headerlink" title="6. 启动"></a>6. 启动</h4><h2 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1-Download-installer-zip"><a href="#1-Download-installer-zip" class="headerlink" title="1. Download installer zip"></a>1. <a href="https://github.com/yuk7/ArchWSL/releases/latest" target="_blank" rel="noopener">Download</a> installer zip</h4><h4 id="2-Extract-all-files-in-zip-file-to-same-directory"><a href="#2-Extract-all-files-in-zip-file-to-same-directory" class="headerlink" title="2. Extract all files in zip file to same directory"></a>2. Extract all files in zip file to same directory</h4><p>Please extract to a folder that has write permission.<br>For example ‘Program Files’ can not be used.</p>
+<h4 id="5-打开Kali-appx-进行安装"><a href="#5-打开Kali-appx-进行安装" class="headerlink" title="5. 打开Kali.appx 进行安装"></a>5. 打开Kali.appx 进行安装</h4><h4 id="6-启动"><a href="#6-启动" class="headerlink" title="6. 启动"></a>6. 启动</h4><h2 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1-Download-installer-zip"><a href="#1-Download-installer-zip" class="headerlink" title="1. Download installer zip"></a>1. <a target="_blank" rel="noopener" href="https://github.com/yuk7/ArchWSL/releases/latest">Download</a> installer zip</h4><h4 id="2-Extract-all-files-in-zip-file-to-same-directory"><a href="#2-Extract-all-files-in-zip-file-to-same-directory" class="headerlink" title="2. Extract all files in zip file to same directory"></a>2. Extract all files in zip file to same directory</h4><p>Please extract to a folder that has write permission.<br>For example ‘Program Files’ can not be used.</p>
 <h4 id="3-Run-Arch-exe-to-Extract-rootfs-and-Register-to-WSL"><a href="#3-Run-Arch-exe-to-Extract-rootfs-and-Register-to-WSL" class="headerlink" title="3. Run Arch.exe to Extract rootfs and Register to WSL"></a>3. Run Arch.exe to Extract rootfs and Register to WSL</h4><p>Exe filename is using to the instance name to register.<br>If you rename it you can register with a diffrent name.</p>
-<p>  <strong>Note:</strong> <em>Source code for Arch.exe can be found in <a href="https://github.com/yuk7/wsldl" target="_blank" rel="noopener">yuk7/wsldl</a>.</em></p>
+<p>  <strong>Note:</strong> <em>Source code for Arch.exe can be found in <a target="_blank" rel="noopener" href="https://github.com/yuk7/wsldl">yuk7/wsldl</a>.</em></p>
 <h4 id="4-Before-using-pacman-please-initialize-keyring"><a href="#4-Before-using-pacman-please-initialize-keyring" class="headerlink" title="4. Before using pacman, please initialize keyring"></a>4. Before using pacman, please initialize keyring</h4><figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">&gt;Arch.exe</span><br><span class="line">[root@PC-NAME user]# pacman-key --init</span><br><span class="line"></span><br><span class="line">[root@PC-NAME user]# pacman-key --populate</span><br></pre></td></tr></table></figure>
 
-<h3 id="How-to-Use-for-Installed-Instance"><a href="#How-to-Use-for-Installed-Instance" class="headerlink" title="How-to-Use(for Installed Instance)"></a>How-to-Use(for Installed Instance)</h3><h4 id="exe-Usage"><a href="#exe-Usage" class="headerlink" title="exe Usage"></a>exe Usage</h4><figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">Useage :</span><br><span class="line">    &lt;no args&gt;</span><br><span class="line">      - Launches the distro's default behavior. By default, this launches your default shell.</span><br><span class="line"></span><br><span class="line">    run &lt;command line&gt;</span><br><span class="line">      - Run the given command line <span class="keyword">in</span> that distro.</span><br><span class="line"></span><br><span class="line">    config [setting [value]]</span><br><span class="line">      - `--default-user &lt;user&gt;`: <span class="built_in">Set</span> the default user <span class="keyword">for</span> this distro to &lt;user&gt;</span><br><span class="line">      - `--default-uid &lt;uid&gt;`: <span class="built_in">Set</span> the default user uid <span class="keyword">for</span> this distro to &lt;uid&gt;</span><br><span class="line">      - `--<span class="built_in">append</span>-<span class="built_in">path</span> &lt;on|off&gt;`: Switch of <span class="built_in">Append</span> Windows <span class="built_in">PATH</span> to $<span class="built_in">PATH</span></span><br><span class="line">      - `--mount-drive &lt;on|off&gt;`: Switch of Mount drives</span><br><span class="line"></span><br><span class="line">    get [setting]</span><br><span class="line">      - `--default-uid`: Get the default user uid <span class="keyword">in</span> this distro</span><br><span class="line">      - `--<span class="built_in">append</span>-<span class="built_in">path</span>`: Get on/off status of <span class="built_in">Append</span> Windows <span class="built_in">PATH</span> to $<span class="built_in">PATH</span></span><br><span class="line">      - `--mount-drive`: Get on/off status of Mount drives</span><br><span class="line">      - `--lxuid`: Get LxUID key <span class="keyword">for</span> this distro</span><br><span class="line"></span><br><span class="line">    clean</span><br><span class="line">      - Uninstalls the distro.</span><br><span class="line"></span><br><span class="line">    <span class="built_in">help</span></span><br><span class="line">      - <span class="built_in">Print</span> this usage message.</span><br></pre></td></tr></table></figure>
+<h3 id="How-to-Use-for-Installed-Instance"><a href="#How-to-Use-for-Installed-Instance" class="headerlink" title="How-to-Use(for Installed Instance)"></a>How-to-Use(for Installed Instance)</h3><h4 id="exe-Usage"><a href="#exe-Usage" class="headerlink" title="exe Usage"></a>exe Usage</h4><figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">Useage :</span><br><span class="line">    &lt;no args&gt;</span><br><span class="line">      - Launches the distro&#x27;s default behavior. By default, this launches your default shell.</span><br><span class="line"></span><br><span class="line">    run &lt;command line&gt;</span><br><span class="line">      - Run the given command line <span class="keyword">in</span> that distro.</span><br><span class="line"></span><br><span class="line">    config [setting [value]]</span><br><span class="line">      - `--default-user &lt;user&gt;`: <span class="built_in">Set</span> the default user <span class="keyword">for</span> this distro to &lt;user&gt;</span><br><span class="line">      - `--default-uid &lt;uid&gt;`: <span class="built_in">Set</span> the default user uid <span class="keyword">for</span> this distro to &lt;uid&gt;</span><br><span class="line">      - `--<span class="built_in">append</span>-<span class="built_in">path</span> &lt;on|off&gt;`: Switch of <span class="built_in">Append</span> Windows <span class="built_in">PATH</span> to $<span class="built_in">PATH</span></span><br><span class="line">      - `--mount-drive &lt;on|off&gt;`: Switch of Mount drives</span><br><span class="line"></span><br><span class="line">    get [setting]</span><br><span class="line">      - `--default-uid`: Get the default user uid <span class="keyword">in</span> this distro</span><br><span class="line">      - `--<span class="built_in">append</span>-<span class="built_in">path</span>`: Get on/off status of <span class="built_in">Append</span> Windows <span class="built_in">PATH</span> to $<span class="built_in">PATH</span></span><br><span class="line">      - `--mount-drive`: Get on/off status of Mount drives</span><br><span class="line">      - `--lxuid`: Get LxUID key <span class="keyword">for</span> this distro</span><br><span class="line"></span><br><span class="line">    clean</span><br><span class="line">      - Uninstalls the distro.</span><br><span class="line"></span><br><span class="line">    <span class="built_in">help</span></span><br><span class="line">      - <span class="built_in">Print</span> this usage message.</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -403,7 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali-Linux"><span class="nav-number">1.</span> <span class="nav-text">Kali Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">1.1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-管理员身份运行Powershell"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 管理员身份运行Powershell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启用-适用于-Linux-的-Windows-子系统"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.  启用 适用于 Linux 的 Windows 子系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-重启"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-下载"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-打开Kali-appx-进行安装"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 打开Kali.appx 进行安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-启动"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arch-Linux"><span class="nav-number">2.</span> <span class="nav-text">Arch Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Download-installer-zip"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Download installer zip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Extract-all-files-in-zip-file-to-same-directory"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Extract all files in zip file to same directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Run-Arch-exe-to-Extract-rootfs-and-Register-to-WSL"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Run Arch.exe to Extract rootfs and Register to WSL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Before-using-pacman-please-initialize-keyring"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. Before using pacman, please initialize keyring</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-Use-for-Installed-Instance"><span class="nav-number">2.2.</span> <span class="nav-text">How-to-Use(for Installed Instance)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#exe-Usage"><span class="nav-number">2.2.1.</span> <span class="nav-text">exe Usage</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali-Linux"><span class="nav-number">1.</span> <span class="nav-text">Kali Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8CPowershell"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 管理员身份运行Powershell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%AF%E7%94%A8-%E9%80%82%E7%94%A8%E4%BA%8E-Linux-%E7%9A%84-Windows-%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.  启用 适用于 Linux 的 Windows 子系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%87%8D%E5%90%AF"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%89%93%E5%BC%80Kali-appx-%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 打开Kali.appx 进行安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arch-Linux"><span class="nav-number">2.</span> <span class="nav-text">Arch Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Download-installer-zip"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Download installer zip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Extract-all-files-in-zip-file-to-same-directory"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Extract all files in zip file to same directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Run-Arch-exe-to-Extract-rootfs-and-Register-to-WSL"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Run Arch.exe to Extract rootfs and Register to WSL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Before-using-pacman-please-initialize-keyring"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. Before using pacman, please initialize keyring</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-Use-for-Installed-Instance"><span class="nav-number">2.2.</span> <span class="nav-text">How-to-Use(for Installed Instance)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#exe-Usage"><span class="nav-number">2.2.1.</span> <span class="nav-text">exe Usage</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -419,20 +419,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -464,7 +464,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -473,12 +473,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

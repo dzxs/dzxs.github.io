@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -33,17 +33,7 @@
 <meta property="og:description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="dzxs">
-<meta property="article:tag" content="devlopment">
-<meta property="article:tag" content=" programming">
-<meta property="article:tag" content=" c&#x2F;c++">
-<meta property="article:tag" content=" ">
-<meta property="article:tag" content="rust">
-<meta property="article:tag" content=" go">
-<meta property="article:tag" content=" java">
-<meta property="article:tag" content=" kotlin">
-<meta property="article:tag" content=" python">
-<meta property="article:tag" content=" Dalvik">
-<meta property="article:tag" content=" php">
+<meta property="article:tag" content="devlopment, programming, c&#x2F;c++, ,rust, go, java, kotlin, python, Dalvik, php">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.d2x3.cn/page/5/">
@@ -144,17 +134,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -230,6 +220,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/how-to-install-coreos.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/how-to-install-coreos.html" class="post-title-link" itemprop="url">how to install coreos</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-29 18:42:25" itemprop="dateCreated datePublished" datetime="2018-11-29T18:42:25+08:00">2018-11-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/devops/" itemprop="url" rel="index"><span itemprop="name">devops</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li><p><del>下载<a target="_blank" rel="noopener" href="https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso">coreos_production_iso_image.iso</a></del></p>
+</li>
+<li><p>下载<a target="_blank" rel="noopener" href="https://github.com/coreos/matchbox/releases/latest">matchbox</a><br>  操作机器：macos(192.168.1.87)</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz</span><br><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz.asc</span><br><span class="line"></span><br><span class="line">tar xzvf matchbox-v0.7.1-darwin-amd64.tar.gz </span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/how-to-install-coreos.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/handy-stuff.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -272,7 +354,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>323</span>
+              <span>353</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -291,7 +373,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> fanqiang=<span class="string">"export ALL_PROXY=socks5://127.0.0.1:1080;export HTTP_PROXY=socks5://127.0.0.1:1080;export HTTPS_PROXY=socks5://127.0.0.1:1080"</span></span><br><span class="line"><span class="built_in">alias</span> bufan=<span class="string">"unset ALL_PROXY;unset HTTP_PROXY;unset HTTPS_PROXY"</span></span><br><span class="line"><span class="built_in">alias</span> v2raygogogo=<span class="string">"nohup ~/repos/tools-stuff/v2ray-macos/v2ray -config ~/OneDrive/tools/config.json &gt;/dev/null 2&gt;&amp;1 &amp;"</span></span><br></pre></td></tr></table></figure>
+          <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> fanqiang=<span class="string">&quot;export ALL_PROXY=socks5://127.0.0.1:1080;export HTTP_PROXY=socks5://127.0.0.1:1080;export HTTPS_PROXY=socks5://127.0.0.1:1080&quot;</span></span><br><span class="line"><span class="built_in">alias</span> bufan=<span class="string">&quot;unset ALL_PROXY;unset HTTP_PROXY;unset HTTPS_PROXY&quot;</span></span><br><span class="line"><span class="built_in">alias</span> v2raygogogo=<span class="string">&quot;nohup ~/repos/tools-stuff/v2ray-macos/v2ray -config ~/OneDrive/tools/config.json &gt;/dev/null 2&gt;&amp;1 &amp;&quot;</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -576,7 +658,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">xcrun:</span> <span class="string">error:</span> invalid active developer path (<span class="regexp">/Library/</span>Developer<span class="regexp">/CommandLineTools), missing xcrun at: /</span>Library<span class="regexp">/Developer/</span>CommandLineTools<span class="regexp">/usr/</span>bin/xcrun</span><br></pre></td></tr></table></figure>
+          <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (<span class="regexp">/Library/</span>Developer<span class="regexp">/CommandLineTools), missing xcrun at: /</span>Library<span class="regexp">/Developer/</span>CommandLineTools<span class="regexp">/usr/</span>bin/xcrun</span><br></pre></td></tr></table></figure>
 
 <p>升级完MacOS Mojave，运行git遇到这个错误，通过命令</p>
 <figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">xcode-<span class="keyword">select</span> <span class="comment">--install</span></span><br></pre></td></tr></table></figure>
@@ -662,7 +744,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Kali-Linux"><a href="#Kali-Linux" class="headerlink" title="Kali Linux"></a>Kali Linux</h2><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="1-管理员身份运行Powershell"><a href="#1-管理员身份运行Powershell" class="headerlink" title="1. 管理员身份运行Powershell"></a>1. 管理员身份运行Powershell</h4><h4 id="2-启用-适用于-Linux-的-Windows-子系统"><a href="#2-启用-适用于-Linux-的-Windows-子系统" class="headerlink" title="2.  启用 适用于 Linux 的 Windows 子系统"></a>2.  启用 适用于 Linux 的 Windows 子系统</h4>
+          <h2 id="Kali-Linux"><a href="#Kali-Linux" class="headerlink" title="Kali Linux"></a>Kali Linux</h2><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><h4 id="1-管理员身份运行Powershell"><a href="#1-管理员身份运行Powershell" class="headerlink" title="1. 管理员身份运行Powershell"></a>1. 管理员身份运行Powershell</h4><h4 id="2-启用-适用于-Linux-的-Windows-子系统"><a href="#2-启用-适用于-Linux-的-Windows-子系统" class="headerlink" title="2.  启用 适用于 Linux 的 Windows 子系统"></a>2.  启用 适用于 Linux 的 Windows 子系统</h4>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/Windows%E5%AE%89%E8%A3%85Linux%E5%AD%90%E7%B3%BB%E7%BB%9F.html#more" rel="contents">
@@ -731,7 +813,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -824,7 +906,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>406</span>
+              <span>426</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -844,7 +926,7 @@
 
       
           <h2 id="win10-重置此电脑-时提示没有恢复环境"><a href="#win10-重置此电脑-时提示没有恢复环境" class="headerlink" title="win10 重置此电脑 时提示没有恢复环境"></a>win10 重置此电脑 时提示没有恢复环境</h2><p>下载windows iso，解压到D:\win10\</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">dism <span class="string">/get-wiminfo</span> <span class="string">/wimfile</span>:<span class="string">"D:\win10\sources\install.wim"</span> <span class="comment">## 查看版本信息</span></span><br><span class="line"></span><br><span class="line">dism <span class="string">/mount-wim</span> <span class="string">/wimfile</span>:<span class="string">"D:\win10\sources\install.wim"</span> <span class="string">/index</span><span class="function">:4</span> <span class="string">/mountdir</span><span class="function">:D</span>:\winre <span class="comment">## 挂载到D:\winre 其中4对应版本</span></span><br><span class="line"></span><br><span class="line">复制 D:\winre\windows\system32\Winre.wim 到C:\Recovery\WindowsRE\Winre.wim</span><br><span class="line"></span><br><span class="line">dism <span class="string">/unmount-wim</span> <span class="string">/MountDir</span><span class="function">:D</span>:\winre <span class="string">/discard</span> <span class="comment">## 卸载</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/setreimage</span> <span class="string">/path</span> C:\Recovery\WindowsRE <span class="comment">##设置</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/enable</span> <span class="comment">## 使能</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/info</span> <span class="comment">## 看看</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">dism <span class="string">/get-wiminfo</span> <span class="string">/wimfile</span>:<span class="string">&quot;D:\win10\sources\install.wim&quot;</span> <span class="comment">## 查看版本信息</span></span><br><span class="line"></span><br><span class="line">dism <span class="string">/mount-wim</span> <span class="string">/wimfile</span>:<span class="string">&quot;D:\win10\sources\install.wim&quot;</span> <span class="string">/index</span><span class="function">:4</span> <span class="string">/mountdir</span><span class="function">:D</span>:\winre <span class="comment">## 挂载到D:\winre 其中4对应版本</span></span><br><span class="line"></span><br><span class="line">复制 D:\winre\windows\system32\Winre.wim 到C:\Recovery\WindowsRE\Winre.wim</span><br><span class="line"></span><br><span class="line">dism <span class="string">/unmount-wim</span> <span class="string">/MountDir</span><span class="function">:D</span>:\winre <span class="string">/discard</span> <span class="comment">## 卸载</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/setreimage</span> <span class="string">/path</span> C:\Recovery\WindowsRE <span class="comment">##设置</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/enable</span> <span class="comment">## 使能</span></span><br><span class="line"></span><br><span class="line">reagentc <span class="string">/info</span> <span class="comment">## 看看</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1036,93 +1118,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/win%E7%BB%88%E7%AB%AF%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/win%E7%BB%88%E7%AB%AF%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE.html" class="post-title-link" itemprop="url">win终端代理设置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-09 06:49:13" itemprop="dateCreated datePublished" datetime="2018-07-09T06:49:13+08:00">2018-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>330</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>windows终端需要代理访问</p>
-<h2 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">set HTTP_PROXY=127.0.0.1:8001</span><br></pre></td></tr></table></figure>
-
-<h2 id="cmd-amp-amp-powershell"><a href="#cmd-amp-amp-powershell" class="headerlink" title="cmd &amp;&amp; powershell"></a>cmd &amp;&amp; powershell</h2><p>只有使用winhttp的才起作用</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh winhttp set proxy 127.0.0.1:1080</span><br><span class="line">netsh winhttp reset proxy # 将 WinHTTP 代理服务器设置重置为 DIRECT。</span><br></pre></td></tr></table></figure>
-
-<h2 id="那powershell要怎么工作在代理下呢"><a href="#那powershell要怎么工作在代理下呢" class="headerlink" title="那powershell要怎么工作在代理下呢"></a>那powershell要怎么工作在代理下呢</h2><p>只要设置一下系统代理就好了<br>windows设置 -&gt; 代理 -&gt; 手动设置代理<br>使用shadowsocksr直接选系统代理模式 全局模式<br>如果是ps脚本呢?<br>自己写的 可以看看 Invoke-WebRequest 之类的文档<br>一些开源的项目 一般都有写好配置代理，譬如scoop之类的，看文档</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1194,20 +1189,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1239,7 +1234,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1248,12 +1243,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

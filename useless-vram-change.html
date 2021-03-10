@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -141,17 +141,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -269,7 +269,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -289,11 +289,11 @@
 
       
         <h1 id="没有卵用"><a href="#没有卵用" class="headerlink" title="没有卵用"></a>没有卵用</h1><p>听说改<code>VRAM（动态，最大值）：    1536 MB</code> 到 <code>VRAM（动态，最大值）：    2048 MB</code>可以解决黑苹果开机第二阶段的花屏问题，然而并没有什么卵用，瞎几把弄了几下，最后简单放置whatevergreen.kext解决问题</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="瞎几把弄的log"><a href="#瞎几把弄的log" class="headerlink" title="瞎几把弄的log"></a>瞎几把弄的log</h1><p>复制<code>AppleIntelFramebufferAzul</code>到桌面</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ kextstat|grep AppleIntel</span><br><span class="line">   99    0 0xffffff7f81958000 0x165000   0x165000   com.apple.driver.AppleIntelFramebufferAzul (12.0.4) 08723398-94F2-302F-86C5-B1CF6BD74D75 &lt;98 97 94 16 13 12 8 7 6 5 3 1&gt;</span><br><span class="line">  102    0 0xffffff7f82f8f000 0x2000     0x2000     com.apple.driver.AppleIntelSlowAdaptiveClocking (4.0.0) 6C2A218B-5497-357B-9B3D-5F6AB495DA6D &lt;101 5 3&gt;</span><br><span class="line">  115    0 0xffffff7f8232a000 0x7b000    0x7b000    com.apple.driver.AppleIntelHD5000Graphics (12.0.4) EA314A1D-F92A-3337-B267-88BEF64FE717 &lt;97 96 94 13 8 7 6 5 3 1&gt;</span><br><span class="line"></span><br><span class="line">➜  ~ sudo cp -r /System/Library/Extensions/AppleIntelFramebufferAzul.kext/Contents/MacOS/AppleIntelFramebufferAzul ~/Desktop</span><br></pre></td></tr></table></figure>
 <p>查看<code>ig-platform-id</code>值</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ ioreg -l |grep ig-platform-id</span><br><span class="line">    | |   | |   <span class="string">"AAPL,ig-platform-id"</span> = &lt;0300220d&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ ioreg -l |grep ig-platform-id</span><br><span class="line">    | |   | |   <span class="string">&quot;AAPL,ig-platform-id&quot;</span> = &lt;0300220d&gt;</span><br></pre></td></tr></table></figure>
 <p>安装<code>hex-fiend</code>，用它打开<code>AppleIntelFramebufferAzul</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ brew cask install hex-fiend</span><br><span class="line">➜  ~ hexf ~/Desktop/AppleIntelFramebufferAzul</span><br></pre></td></tr></table></figure>
 <p>搜索<code>ig-platform-id</code>值， 这里是<code>0300220d</code>，<code>0300220d</code> 后面就是要替换的值， 这里是<code>00030303 00000002 00003001 00000000 00000060</code></p>
@@ -430,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#没有卵用"><span class="nav-number">1.</span> <span class="nav-text">没有卵用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#瞎几把弄的log"><span class="nav-number">2.</span> <span class="nav-text">瞎几把弄的log</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%8D%B5%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">没有卵用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9E%8E%E5%87%A0%E6%8A%8A%E5%BC%84%E7%9A%84log"><span class="nav-number">2.</span> <span class="nav-text">瞎几把弄的log</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -446,20 +446,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -491,7 +491,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -500,12 +500,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

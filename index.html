@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -33,17 +33,7 @@
 <meta property="og:description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="dzxs">
-<meta property="article:tag" content="devlopment">
-<meta property="article:tag" content=" programming">
-<meta property="article:tag" content=" c&#x2F;c++">
-<meta property="article:tag" content=" ">
-<meta property="article:tag" content="rust">
-<meta property="article:tag" content=" go">
-<meta property="article:tag" content=" java">
-<meta property="article:tag" content=" kotlin">
-<meta property="article:tag" content=" python">
-<meta property="article:tag" content=" Dalvik">
-<meta property="article:tag" content=" php">
+<meta property="article:tag" content="devlopment, programming, c&#x2F;c++, ,rust, go, java, kotlin, python, Dalvik, php">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.d2x3.cn/">
@@ -144,17 +134,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -230,6 +220,133 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/pve%E5%AE%89%E8%A3%85macOS-Big-Sur.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android-chrome-384x384.png">
+      <meta itemprop="name" content="dzxs">
+      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="瞎几把XI[U]E">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/pve%E5%AE%89%E8%A3%85macOS-Big-Sur.html" class="post-title-link" itemprop="url">pve安装macOS Big Sur</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-14 19:39:29" itemprop="dateCreated datePublished" datetime="2020-11-14T19:39:29+08:00">2020-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pve/" itemprop="url" rel="index"><span itemprop="name">pve</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="制作iso"><a href="#制作iso" class="headerlink" title="制作iso"></a>制作iso</h1><p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/kholia/OSX-KVM/master/fetch-macOS.py">fetch-macOS.py</a></p>
+<p>生成一个<code>BigSurInstaller.dmg</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 fetch-macOS.py</span><br><span class="line">hdiutil create -o BigSurInstaller.dmg -size 14g -layout GPTSPUD -fs HFS+J</span><br><span class="line">sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/install_build --nointeraction</span><br><span class="line">hdiutil detach -force <span class="string">&quot;/Volumes/Install macOS Big Sur&quot;</span></span><br><span class="line">mv BigSurInstaller.dmg BigSurInstaller.iso</span><br></pre></td></tr></table></figure>
+
+<p>下载一个<code>OpenCore-v10.iso</code></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/thenickdude/KVM-Opencore">KVM-Opencore</a></p>
+<p>将<code>OpenCore-v10.iso</code>和<code>BigSurInstaller.iso</code>上传到pve</p>
+<p>新建虚拟机,配置如下</p>
+<p>编辑 <code>vim.tiny /etc/pve/qemu-server/101.conf</code></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">args: -device isa-applesmc,<span class="attribute">osk</span>=<span class="string">&quot;ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc&quot;</span> -smbios <span class="attribute">type</span>=2 -device usb-kbd,<span class="attribute">bus</span>=ehci.0,port=2 -cpu host,<span class="attribute">kvm</span>=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc</span><br></pre></td></tr></table></figure>
+
+<p>终端输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;options kvm ignore_msrs=Y&quot;</span> &gt;&gt; /etc/modprobe.d/kvm.conf &amp;&amp; update-initramfs -k all -u</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/module/kvm/parameters/ignore_msrs</span><br></pre></td></tr></table></figure>
+
+<p>将opencore放进efi</p>
+<h1 id="disk2s1-是opencorev10-iso-disk0s1是安装BigSur的硬盘EFI分区"><a href="#disk2s1-是opencorev10-iso-disk0s1是安装BigSur的硬盘EFI分区" class="headerlink" title="disk2s1 是opencorev10.iso disk0s1是安装BigSur的硬盘EFI分区"></a>disk2s1 是opencorev10.iso disk0s1是安装BigSur的硬盘EFI分区</h1><p>sudo dd if=/dev/disk2s1 of=/dev/disk0s1</p>
+<h2 id="直通设置"><a href="#直通设置" class="headerlink" title="直通设置"></a>直通设置</h2><p>硬盘直通</p>
+<p>qm set  592  -scsi2 /dev/disk/by-id/ata-ST3000DM001-1CH166_Z1F41BLC</p>
+<p>显卡直通</p>
+<p>加载vfio模块</p>
+<p>编辑 <code>/etc/modules</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vfio</span><br><span class="line">vfio_iommu_type1</span><br><span class="line">vfio_pci</span><br><span class="line">vfio_virqfd</span><br></pre></td></tr></table></figure>
+
+<p>屏蔽gpu驱动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist radeon&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist nouveau&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist nvidia&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br></pre></td></tr></table></figure>
+
+<p>开启IOMMU</p>
+<p>编辑 <code>/etc/kernel/cmdline</code> (编辑<code>/etc/default/grub</code>里的<code>GRUB_CMDLINE_LINUX_DEFAULT</code>没有启作用)</p>
+<p><code>lspci -nn</code>找到显卡的vendor_id, device_id</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">intremap&#x3D;no_x2apic_optout intel_iommu&#x3D;on vfio-pci.ids&#x3D;&lt;vendor_id&gt;:&lt;device_id&gt;,&lt;vendor_id&gt;:&lt;device_id&gt; disable_vga&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>例如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">intremap&#x3D;no_x2apic_optout intel_iommu&#x3D;on vfio-pci.ids&#x3D;10de:1287,10de:0e0f disable_vga&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>更新、重启</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-initramfs -u -k all</span><br><span class="line">pve-efiboot-tool refresh</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>验证</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># kernel参数</span></span><br><span class="line">cat /proc/cmdline</span><br><span class="line"><span class="comment"># IOMMU</span></span><br><span class="line">dmesg |grep -E <span class="string">&quot;DMAR|IOMMU&quot;</span></span><br><span class="line"><span class="comment"># vfio</span></span><br><span class="line">dmesg |grep -i vfio</span><br><span class="line"><span class="comment"># vfio-pci Kernel driver in use: vfio-pci</span></span><br><span class="line">lspci -nnk</span><br><span class="line"><span class="comment"># IOMMU groups</span></span><br><span class="line">find /sys/kernel/iommu_groups/ -<span class="built_in">type</span> l</span><br></pre></td></tr></table></figure>
+
+<p>设置</p>
+<p>显卡插上显示器,此时如果显示器没有信号,插拔一下显示器</p>
+<p>OSK值</p>
+<p><code>ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc</code></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/kholia/OSX-KVM">OSX-KVM</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/pixel2%E5%AE%89%E8%A3%85Android11-%E9%80%9A%E8%BF%87magisk-root.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -291,28 +408,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li>下载images</li>
-</ol>
-<p><a href="https://developers.google.com/android/images#walleye" target="_blank" rel="noopener">镜像列表</a><br><a href="https://dl.google.com/dl/android/aosp/walleye-rp1a.201005.004-factory-78b8d156.zip" target="_blank" rel="noopener">镜像地址</a></p>
-<ol start="2">
-<li>备份</li>
-</ol>
-<p>备份数据</p>
+          <h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1N54y1k7aw/">https://www.bilibili.com/video/BV1N54y1k7aw/</a></p>
+<h2 id="下载images"><a href="#下载images" class="headerlink" title="下载images"></a>下载images</h2><p><a target="_blank" rel="noopener" href="https://developers.google.com/android/images#walleye">镜像列表</a></p>
+<p><a target="_blank" rel="noopener" href="https://dl.google.com/dl/android/aosp/walleye-rp1a.201005.004-factory-78b8d156.zip">镜像地址</a></p>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>备份数据</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb backup -f all -all -apk -nosystem</span><br></pre></td></tr></table></figure>
 
 <p>备份apk</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> APP <span class="keyword">in</span> $(adb shell pm list packages -3)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  APP=$( <span class="built_in">echo</span> <span class="variable">$&#123;APP&#125;</span> | sed <span class="string">"s/^package://"</span>)</span><br><span class="line">  adb backup -f <span class="variable">$&#123;APP&#125;</span>.backup <span class="variable">$&#123;APP&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> APP <span class="keyword">in</span> $(adb shell pm list packages -3)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  APP=$( <span class="built_in">echo</span> <span class="variable">$&#123;APP&#125;</span> | sed <span class="string">&quot;s/^package://&quot;</span>)</span><br><span class="line">  adb backup -f <span class="variable">$&#123;APP&#125;</span>.backup <span class="variable">$&#123;APP&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>刷机</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">./flash-all.sh</span><br></pre></td></tr></table></figure>
+<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">./flash-all.sh</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>root</li>
-</ol>
-<p>先安装翻墙软件(如果是在大陆)和<code>magisk manager</code></p>
+<h2 id="root"><a href="#root" class="headerlink" title="root"></a>root</h2><p>先安装翻墙软件(如果是在大陆)和<code>magisk manager</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装翻墙软件</span></span><br><span class="line">adb install io.github.trojan_gfw.igniter.apk</span><br><span class="line"><span class="comment"># 安装magisk manager</span></span><br><span class="line">adb install com.topjohnwu.magisk.apk</span><br></pre></td></tr></table></figure>
 
 <p>手机上打开<code>magisk manager</code>,选择<code>测试通道</code></p>
@@ -320,7 +427,7 @@
 <p><strong><em>NOTE:</em></strong> 很关键,就当前而言,稳定通道无法开机,会去到<code>bootloader</code>,显示错误信息<code>slot unbootable load error</code>,嗯~我试过了</p>
 </blockquote>
 <blockquote>
-<p>如果在<code>flash-all.sh</code>刷机那一步去掉了<code>-w</code>,也就是不删除数据,而之前又安装有<code>magisk</code>和一些不兼容modules,可能开机会一直循环在谷歌图标那里,这是<a href="https://github.com/topjohnwu/Magisk/issues/3157" target="_blank" rel="noopener">相关issues</a>. issues里提到删除<code>/data/adb/modules</code>文件夹,我没有<code>TWRP</code>,所以直接在谷歌图标循环的时候,<code>adb shell</code>, <code>su</code>进去删除的,但是没有用.嗯~我也试过了,所以才备份数据重新刷机的.</p>
+<p>如果在<code>flash-all.sh</code>刷机那一步去掉了<code>-w</code>,也就是不删除数据,而之前又安装有<code>magisk</code>和一些不兼容modules,可能开机会一直循环在谷歌图标那里,这是<a target="_blank" rel="noopener" href="https://github.com/topjohnwu/Magisk/issues/3157">相关issues</a>. issues里提到删除<code>/data/adb/modules</code>文件夹,我没有<code>TWRP</code>,所以直接在谷歌图标循环的时候,<code>adb shell</code>, <code>su</code>进去删除的,但是没有用.嗯~我也试过了,所以才备份数据重新刷机的.</p>
 </blockquote>
 <blockquote>
 <p>在<code>magisk manager</code>界面,最新显示<code>无法获取</code>,请检查自己的网络环境,可能需要翻墙</p>
@@ -333,12 +440,9 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb pull /sdcard/Download/magisk_patched.img</span><br></pre></td></tr></table></figure>
 
 <p>重启到bootloader,刷入<code>magisk_patched.img</code></p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">adb</span> <span class="string">reboot bootloader</span></span><br><span class="line"><span class="attr">fastboot</span> <span class="string">flash boot magisk_patched.img</span></span><br><span class="line"><span class="attr">fastboot</span> <span class="string">reboot</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">adb reboot <span class="keyword">bootloader</span></span><br><span class="line"><span class="keyword">fastboot </span>flash <span class="keyword">boot </span>magisk_patched.img</span><br><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li>恢复备份</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb install &lt;app&gt;.apk</span><br><span class="line">adb restore all</span><br></pre></td></tr></table></figure>
+<h2 id="恢复备份"><a href="#恢复备份" class="headerlink" title="恢复备份"></a>恢复备份</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb install &lt;app&gt;.apk</span><br><span class="line">adb restore all</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -390,7 +494,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -410,19 +514,19 @@
 
       
           <h2 id="安装-Proxmox-VE"><a href="#安装-Proxmox-VE" class="headerlink" title="安装 Proxmox VE"></a>安装 <code>Proxmox VE</code></h2><ul>
-<li><a href="https://pve.proxmox.com/wiki/Installation" target="_blank" rel="noopener">文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/Installation">文档</a></li>
 </ul>
 <p>有一张ssd盘和3张hdd盘,都是插在raid 控制器上,经过一番google、百度,希望使用zfs,所以要将raid控制器的raid模式改成hba模式.</p>
 <p>计划将proxmox安装在ssd盘,3张hdd盘做Striped Vdev ZPool(raid0)</p>
 <h2 id="安装macOS"><a href="#安装macOS" class="headerlink" title="安装macOS"></a>安装macOS</h2><ul>
-<li><a href="https://github.com/kholia/OSX-KVM" target="_blank" rel="noopener">OSX-KVM</a></li>
-<li><a href="https://github.com/thenickdude/KVM-Opencore" target="_blank" rel="noopener">KVM-Opencore</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kholia/OSX-KVM">OSX-KVM</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thenickdude/KVM-Opencore">KVM-Opencore</a></li>
 </ul>
 <p>编辑 <code>vim.tiny /etc/pve/qemu-server/101.conf</code></p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">args: -device isa-applesmc,<span class="attribute">osk</span>=<span class="string">"ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"</span> -smbios <span class="attribute">type</span>=2 -devi</span><br><span class="line">ce usb-kbd,<span class="attribute">bus</span>=ehci.0,port=2 -cpu host,<span class="attribute">kvm</span>=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">args: -device isa-applesmc,<span class="attribute">osk</span>=<span class="string">&quot;ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc&quot;</span> -smbios <span class="attribute">type</span>=2 -devi</span><br><span class="line">ce usb-kbd,<span class="attribute">bus</span>=ehci.0,port=2 -cpu host,<span class="attribute">kvm</span>=on,vendor=GenuineIntel,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc</span><br></pre></td></tr></table></figure>
 
 <p>终端输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"options kvm ignore_msrs=Y"</span> &gt;&gt; /etc/modprobe.d/kvm.conf &amp;&amp; update-initramfs -k all -u</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/module/kvm/parameters/ignore_msrs</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;options kvm ignore_msrs=Y&quot;</span> &gt;&gt; /etc/modprobe.d/kvm.conf &amp;&amp; update-initramfs -k all -u</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/module/kvm/parameters/ignore_msrs</span><br></pre></td></tr></table></figure>
 
 <p>OSK值</p>
 <p><code>ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc</code></p>
@@ -432,7 +536,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vfio</span><br><span class="line">vfio_iommu_type1</span><br><span class="line">vfio_pci</span><br><span class="line">vfio_virqfd</span><br></pre></td></tr></table></figure>
 
 <p>屏蔽gpu驱动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist radeon"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist nouveau"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"blacklist nvidia"</span> &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist radeon&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist nouveau&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;blacklist nvidia&quot;</span> &gt;&gt; /etc/modprobe.d/blacklist.conf</span><br></pre></td></tr></table></figure>
 
 <p>开启IOMMU</p>
 <p>编辑 <code>/etc/kernel/cmdline</code> (编辑<code>/etc/default/grub</code>里的<code>GRUB_CMDLINE_LINUX_DEFAULT</code>没有启作用)</p>
@@ -445,7 +549,7 @@
 
 
 <p>验证</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># kernel参数</span></span><br><span class="line">cat /proc/cmdline</span><br><span class="line"><span class="comment"># IOMMU</span></span><br><span class="line">dmesg |grep -E <span class="string">"DMAR|IOMMU"</span></span><br><span class="line"><span class="comment"># vfio</span></span><br><span class="line">dmesg |grep -i vfio</span><br><span class="line"><span class="comment"># vfio-pci Kernel driver in use: vfio-pci</span></span><br><span class="line">lspci -nnk</span><br><span class="line"><span class="comment"># IOMMU groups</span></span><br><span class="line">find /sys/kernel/iommu_groups/ -<span class="built_in">type</span> l</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># kernel参数</span></span><br><span class="line">cat /proc/cmdline</span><br><span class="line"><span class="comment"># IOMMU</span></span><br><span class="line">dmesg |grep -E <span class="string">&quot;DMAR|IOMMU&quot;</span></span><br><span class="line"><span class="comment"># vfio</span></span><br><span class="line">dmesg |grep -i vfio</span><br><span class="line"><span class="comment"># vfio-pci Kernel driver in use: vfio-pci</span></span><br><span class="line">lspci -nnk</span><br><span class="line"><span class="comment"># IOMMU groups</span></span><br><span class="line">find /sys/kernel/iommu_groups/ -<span class="built_in">type</span> l</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,7 +621,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12" target="_blank" rel="noopener">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
+          <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
 <h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>hdiutil create -o ~/Desktop/Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+J<br>hdiutil attach ~/Desktop/Catalina.dmg -noverify -mountpoint /Volumes/install_build<br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia –volume /Volumes/install_build –nointeraction<br>hdiutil detach “/Volumes/Install macOS Catalina”<br>hdiutil convert ~/Desktop/Catalina.dmg -format UDTO -o ~/Desktop/Catalina.cdr<br>mv ~/Desktop/Catalina.cdr ~/Desktop/Catalina.iso</p>
 <h2 id="直通显卡"><a href="#直通显卡" class="headerlink" title="直通显卡"></a>直通显卡</h2><p>hypervisor.cpuid.v0 = “FALSE”</p>
 <p>第一次设置要重启esxi</p>
@@ -526,11 +630,11 @@
 <p>usb.generic.allowHID = “TRUE”<br>usb.quirks.device0 = “0x24ae:0x2003 allow”<br>usb.quirks.device1 = “0x413c:0x2107 allow”<br>usb.quirks.device2 = “0x093a:0x2510 allow”</p>
 <p>vi /bootbank/boot.cfg<br>CONFIG./USB/quirks=0x24ae:0x2003::0xffff:UQ_KBD_IGNORE:0x413c:0x2107::0xffff:UQ_KBD_IGNORE:0x093a:0x2510::0xffff:UQ_KBD_IGNORE</p>
 <p>第一次设置要重启esxi</p>
-<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
+<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a target="_blank" rel="noopener" href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a target="_blank" rel="noopener" href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
 <p>esxcli software sources profile list -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip<br>esxcli software profile update -p ESXi-7.0.0-15843807-standard -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip –dry-run</p>
 <p>esxcli software profile update –allow-downgrades</p>
 <h2 id="esxi-挂载upan"><a href="#esxi-挂载upan" class="headerlink" title="esxi 挂载upan"></a>esxi 挂载upan</h2><p>/etc/init.d/usbarbitrator stop<br>esxcli storage core device list | grep -i usb<br>esxcli storage filesystem list</p>
-<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a href="https://github.com/shanyungyang/esxi-unlocker" target="_blank" rel="noopener">https://github.com/shanyungyang/esxi-unlocker</a></p>
+<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a target="_blank" rel="noopener" href="https://github.com/shanyungyang/esxi-unlocker">https://github.com/shanyungyang/esxi-unlocker</a></p>
 
       
     </div>
@@ -876,14 +980,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>17 分钟</span>
+              <span>18 分钟</span>
             </span>
 
         </div>
@@ -968,14 +1072,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>27k</span>
+              <span>30k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>25 分钟</span>
+              <span>27 分钟</span>
             </span>
 
         </div>
@@ -1063,7 +1167,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>934</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1086,98 +1190,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/manager-ssh-sessions-from-config.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/Admirer.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android-chrome-384x384.png">
-      <meta itemprop="name" content="dzxs">
-      <meta itemprop="description" content="没有什么是一成不变的，一切[D:\\AV\\]都在变化">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瞎几把XI[U]E">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Admirer.html" class="post-title-link" itemprop="url">Admirer</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-11 09:58:38" itemprop="dateCreated datePublished" datetime="2020-05-11T09:58:38+08:00">2020-05-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/" itemprop="url" rel="index"><span itemprop="name">hackthebox</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hackthebox/active/" itemprop="url" rel="index"><span itemprop="name">active</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img width="70%" src="Admirer/adminer.png"/>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Admirer.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1268,20 +1280,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1313,7 +1325,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1322,12 +1334,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

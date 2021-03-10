@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -137,17 +137,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -285,11 +285,11 @@
 
       
         <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
-<li><p><del>下载<a href="https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso" target="_blank" rel="noopener">coreos_production_iso_image.iso</a></del></p>
+<li><p><del>下载<a target="_blank" rel="noopener" href="https://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso">coreos_production_iso_image.iso</a></del></p>
 </li>
-<li><p>下载<a href="https://github.com/coreos/matchbox/releases/latest" target="_blank" rel="noopener">matchbox</a><br>  操作机器：macos(192.168.1.87)</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz</span><br><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz.asc</span><br><span class="line"></span><br><span class="line">tar xzvf matchbox-v0.7.1-darwin-amd64.tar.gz</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<li><p>下载<a target="_blank" rel="noopener" href="https://github.com/coreos/matchbox/releases/latest">matchbox</a><br>  操作机器：macos(192.168.1.87)</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz</span><br><span class="line">wget https://github.com/coreos/matchbox/releases/download/v0.7.1/matchbox-v0.7.1-darwin-amd64.tar.gz.asc</span><br><span class="line"></span><br><span class="line">tar xzvf matchbox-v0.7.1-darwin-amd64.tar.gz </span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <p>  编辑<code>vim matchbox-v0.7.1-darwin-amd64/scripts/tls/openssl.conf</code></p>
   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">subjectAltName = IP.1:192.168.1.87</span><br></pre></td></tr></table></figure>
 
@@ -300,16 +300,12 @@
   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> matchbox-v0.7.1-darwin-amd64/</span><br><span class="line">mkdir -p data/assets</span><br><span class="line">./matchbox -address 0.0.0.0:8080 -assets-path ./data/assets -ca-file ./scripts/tls/ca.crt -cert-file ./scripts/tls/server.crt -data-path ./data key-file ./scripts/tls/server.key -web-cert-file ./scripts/tls/server.crt -web-key-file ./scripts/tls/server.key</span><br></pre></td></tr></table></figure>
 
 <p>  <code>curl http://192.168.1.87:8080</code></p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">matchbox</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载(Container Linux)[<a href="https://coreos.com/releases/]" target="_blank" rel="noopener">https://coreos.com/releases/]</a></p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">matchbox</span><br></pre></td></tr></table></figure></li>
+<li><p>下载(Container Linux)[<a target="_blank" rel="noopener" href="https://coreos.com/releases/]">https://coreos.com/releases/]</a></p>
   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> matchbox-v0.7.1-darwin-amd64/data/assets</span><br><span class="line">../../scripts/get-coreos stable 1911.4.0 .</span><br></pre></td></tr></table></figure>
 
 <p>  验证</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://192.168.1.87:8080/assets/coreos/1911.4.0/</span><br><span class="line"></span><br><span class="line"><span class="comment">#TODO</span></span><br><span class="line">未完待续</span><br></pre></td></tr></table></figure>
-
-
-</li>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://192.168.1.87:8080/assets/coreos/1911.4.0/</span><br><span class="line"></span><br><span class="line"><span class="comment">#TODO</span></span><br><span class="line">未完待续</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
@@ -415,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,20 +427,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -476,7 +472,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -485,12 +481,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -136,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -271,7 +271,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -290,8 +290,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch ~/.vimrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"syntax on"</span> &gt;&gt; ~/.vimrc</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch ~/.vimrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;syntax on&quot;</span> &gt;&gt; ~/.vimrc</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <h1 id="ruby"><a href="#ruby" class="headerlink" title="ruby"></a>ruby</h1><ol>
 <li><code>brew install rbenv</code> - 用rbenv控制ruby版本</li>
 <li><code>rbenv install 2.5.3</code> -  安装2.5.3版本</li>
@@ -315,10 +315,10 @@
 </li>
 </ol>
 <h1 id="sublime-text"><a href="#sublime-text" class="headerlink" title="sublime text"></a>sublime text</h1><p>version <code>3176</code><br>fileoffset <code>0x85036</code> - assemble <code>mov rax, 1 retn</code> 详情咨询辣个女人,兼职32号技师和64号技师</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install sublime-text` <span class="comment"># 3176</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">'\x48\xc7\xc0\x00\x00\x00\xc3'</span> | dd seek=$((0x85036)) conv=notrunc bs=1 of=/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install sublime-text` <span class="comment"># 3176</span></span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;\x48\xc7\xc0\x00\x00\x00\xc3&#x27;</span> | dd seek=$((<span class="number">0</span>x85036)) conv=notrunc bs=1 of=/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text</span><br></pre></td></tr></table></figure>
 
 <h1 id="istat-menus"><a href="#istat-menus" class="headerlink" title="istat menus"></a>istat menus</h1><p>version <code>6.31 (1090)</code><br>fileoffset <code>0x64b36</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install istat-menus</span><br><span class="line"><span class="built_in">printf</span> <span class="string">'\x83'</span> | dd seek=$((0x64b36)) conv=notrunc bs=1 of=/Applications/iStat\ Menus.app/Contents/MacOS/iStat\ Menus</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install istat-menus</span><br><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;\x83&#x27;</span> | dd seek=$((<span class="number">0</span>x64b36)) conv=notrunc bs=1 of=/Applications/iStat\ Menus.app/Contents/MacOS/iStat\ Menus</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -438,20 +438,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -483,7 +483,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -492,12 +492,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

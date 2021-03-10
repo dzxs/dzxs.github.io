@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -138,17 +138,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -266,7 +266,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -291,17 +291,17 @@
 
             <i class="fa fa-quote-right"></i>
           </blockquote>
-<a id="more"></a>
-<h2 id="scoop"><a href="#scoop" class="headerlink" title="scoop"></a>scoop</h2><p> <a href="https://github.com/lukesampson/scoop" target="_blank" rel="noopener">https://github.com/lukesampson/scoop</a></p>
+<span id="more"></span>
+<h2 id="scoop"><a href="#scoop" class="headerlink" title="scoop"></a>scoop</h2><p> <a target="_blank" rel="noopener" href="https://github.com/lukesampson/scoop">https://github.com/lukesampson/scoop</a></p>
 <p>windows 的命令行安装程序管理工具</p>
-<h3 id="scoop-dzxs"><a href="#scoop-dzxs" class="headerlink" title="scoop-dzxs"></a>scoop-dzxs</h3><p>我的bucket <a href="https://github.com/dzxs/scoop-dzxs" target="_blank" rel="noopener">https://github.com/dzxs/scoop-dzxs</a></p>
-<h4 id="安装-scoop-到自定义目录"><a href="#安装-scoop-到自定义目录" class="headerlink" title="安装 scoop 到自定义目录"></a>安装 scoop 到自定义目录</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="type">environment</span>]::setEnvironmentVariable(<span class="string">'SCOOP'</span>,<span class="string">'D:\Applications\Scoop'</span>,<span class="string">'User'</span>)</span><br><span class="line"><span class="variable">$env:SCOOP</span>=<span class="string">'D:\Applications\Scoop'</span></span><br><span class="line">iex (<span class="built_in">new-object</span> net.webclient).downloadstring(<span class="string">'https://raw.githubusercontent.com/lukesampson/scoop/master/bin/install.ps1'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="scoop-dzxs"><a href="#scoop-dzxs" class="headerlink" title="scoop-dzxs"></a>scoop-dzxs</h3><p>我的bucket <a target="_blank" rel="noopener" href="https://github.com/dzxs/scoop-dzxs">https://github.com/dzxs/scoop-dzxs</a></p>
+<h4 id="安装-scoop-到自定义目录"><a href="#安装-scoop-到自定义目录" class="headerlink" title="安装 scoop 到自定义目录"></a>安装 scoop 到自定义目录</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">[<span class="type">environment</span>]::setEnvironmentVariable(<span class="string">&#x27;SCOOP&#x27;</span>,<span class="string">&#x27;D:\Applications\Scoop&#x27;</span>,<span class="string">&#x27;User&#x27;</span>)</span><br><span class="line"><span class="variable">$env:SCOOP</span>=<span class="string">&#x27;D:\Applications\Scoop&#x27;</span></span><br><span class="line"><span class="built_in">iex</span> (<span class="built_in">new-object</span> net.webclient).downloadstring(<span class="string">&#x27;https://raw.githubusercontent.com/lukesampson/scoop/master/bin/install.ps1&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h4 id="添加scoop-dzxs"><a href="#添加scoop-dzxs" class="headerlink" title="添加scoop-dzxs"></a>添加scoop-dzxs</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop bucket add dzxs https://github.com/dzxs/scoop<span class="literal">-dzxs</span></span><br><span class="line">scoop bucket list <span class="comment"># -&gt; you should see 'dzxs'</span></span><br></pre></td></tr></table></figure>
+<h4 id="添加scoop-dzxs"><a href="#添加scoop-dzxs" class="headerlink" title="添加scoop-dzxs"></a>添加scoop-dzxs</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop bucket add dzxs https://github.com/dzxs/scoop<span class="literal">-dzxs</span></span><br><span class="line">scoop bucket list <span class="comment"># -&gt; you should see &#x27;dzxs&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="记一下"><a href="#记一下" class="headerlink" title="记一下"></a>记一下</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop cache rm * <span class="comment"># 清空所有缓存</span></span><br><span class="line">scoop cleanup * <span class="comment"># 删除所有app的旧版本</span></span><br></pre></td></tr></table></figure>
+<h4 id="记一下"><a href="#记一下" class="headerlink" title="记一下"></a>记一下</h4><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scoop cache <span class="built_in">rm</span> * <span class="comment"># 清空所有缓存</span></span><br><span class="line">scoop cleanup * <span class="comment"># 删除所有app的旧版本</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="powershell"><a href="#powershell" class="headerlink" title="powershell"></a>powershell</h2><h3 id="Invoke-WebRequest-下载文件"><a href="#Invoke-WebRequest-下载文件" class="headerlink" title="Invoke-WebRequest 下载文件"></a>Invoke-WebRequest 下载文件</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> https://gist.githubusercontent.com/dzxs/f78262f38190cc499540f12d5c245822/raw/<span class="number">37</span>abe4b11d08590282b16aae55096bdbeae0faf5/OpenWithSublimeText3.bat <span class="literal">-OutFile</span> OpenWithSublimeText3.bat</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> scoop install sudo <span class="comment">#类似linux下的sudo</span></span><br><span class="line">Installing <span class="string">'sudo'</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) [<span class="number">64</span><span class="type">bit</span>]</span><br><span class="line">sudo.ps1 (<span class="number">2.0</span> KB) [===========================================================================================] <span class="number">100</span>%</span><br><span class="line">Checking hash of sudo.ps1 ... ok.</span><br><span class="line">Linking D:\apps\Scoop\apps\sudo\current =&gt; D:\apps\Scoop\apps\sudo\<span class="number">0.2017</span>.<span class="number">03.24</span></span><br><span class="line">Creating shim <span class="keyword">for</span> <span class="string">'sudo'</span>.</span><br><span class="line"><span class="string">'sudo'</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) was installed successfully!</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> sudo .\OpenWithSublimeText3.bat</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+<h2 id="powershell"><a href="#powershell" class="headerlink" title="powershell"></a>powershell</h2><h3 id="Invoke-WebRequest-下载文件"><a href="#Invoke-WebRequest-下载文件" class="headerlink" title="Invoke-WebRequest 下载文件"></a>Invoke-WebRequest 下载文件</h3><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> https://gist.githubusercontent.com/dzxs/f78262f38190cc499540f12d5c245822/raw/<span class="number">37</span>abe4b11d08590282b16aae55096bdbeae0faf5/OpenWithSublimeText3.bat <span class="literal">-OutFile</span> OpenWithSublimeText3.bat</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> scoop install sudo <span class="comment">#类似linux下的sudo</span></span><br><span class="line">Installing <span class="string">&#x27;sudo&#x27;</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) [<span class="number">64</span><span class="type">bit</span>]</span><br><span class="line">sudo.ps1 (<span class="number">2.0</span> KB) [===========================================================================================] <span class="number">100</span>%</span><br><span class="line">Checking hash of sudo.ps1 ... ok.</span><br><span class="line">Linking D:\apps\Scoop\apps\sudo\current =&gt; D:\apps\Scoop\apps\sudo\<span class="number">0.2017</span>.<span class="number">03.24</span></span><br><span class="line">Creating shim <span class="keyword">for</span> <span class="string">&#x27;sudo&#x27;</span>.</span><br><span class="line"><span class="string">&#x27;sudo&#x27;</span> (<span class="number">0.2017</span>.<span class="number">03.24</span>) was installed successfully!</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> sudo .\OpenWithSublimeText3.bat</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">操作成功完成。</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
 
 <p>这个下载的文件可以将sublime-text添加到右键</p>
 <img data-src="/Windows-log/1.png" class="">
@@ -412,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scoop"><span class="nav-number">1.</span> <span class="nav-text">scoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scoop-dzxs"><span class="nav-number">1.1.</span> <span class="nav-text">scoop-dzxs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-scoop-到自定义目录"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装 scoop 到自定义目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加scoop-dzxs"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加scoop-dzxs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记一下"><span class="nav-number">1.1.3.</span> <span class="nav-text">记一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#powershell"><span class="nav-number">2.</span> <span class="nav-text">powershell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Invoke-WebRequest-下载文件"><span class="nav-number">2.1.</span> <span class="nav-text">Invoke-WebRequest 下载文件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scoop"><span class="nav-number">1.</span> <span class="nav-text">scoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scoop-dzxs"><span class="nav-number">1.1.</span> <span class="nav-text">scoop-dzxs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-scoop-%E5%88%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%AE%E5%BD%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装 scoop 到自定义目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0scoop-dzxs"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加scoop-dzxs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E4%B8%80%E4%B8%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">记一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#powershell"><span class="nav-number">2.</span> <span class="nav-text">powershell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Invoke-WebRequest-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">Invoke-WebRequest 下载文件</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,20 +428,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -473,7 +473,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -482,12 +482,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

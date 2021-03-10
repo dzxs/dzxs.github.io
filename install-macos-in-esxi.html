@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -35,17 +35,7 @@
 <meta property="article:published_time" content="2020-11-04T09:11:40.000Z">
 <meta property="article:modified_time" content="2020-11-04T09:11:40.000Z">
 <meta property="article:author" content="dzxs">
-<meta property="article:tag" content="devlopment">
-<meta property="article:tag" content=" programming">
-<meta property="article:tag" content=" c&#x2F;c++">
-<meta property="article:tag" content=" ">
-<meta property="article:tag" content="rust">
-<meta property="article:tag" content=" go">
-<meta property="article:tag" content=" java">
-<meta property="article:tag" content=" kotlin">
-<meta property="article:tag" content=" python">
-<meta property="article:tag" content=" Dalvik">
-<meta property="article:tag" content=" php">
+<meta property="article:tag" content="devlopment, programming, c&#x2F;c++, ,rust, go, java, kotlin, python, Dalvik, php">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.d2x3.cn/install-macos-in-esxi.html">
@@ -146,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -284,7 +274,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12" target="_blank" rel="noopener">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
+        <h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p><a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12">https://apps.apple.com/us/app/macos-catalina/id1466841314?l=en-us&amp;mt=12</a></p>
 <h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>hdiutil create -o ~/Desktop/Catalina.dmg -size 9g -layout GPTSPUD  -fs HFS+J<br>hdiutil attach ~/Desktop/Catalina.dmg -noverify -mountpoint /Volumes/install_build<br>sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia –volume /Volumes/install_build –nointeraction<br>hdiutil detach “/Volumes/Install macOS Catalina”<br>hdiutil convert ~/Desktop/Catalina.dmg -format UDTO -o ~/Desktop/Catalina.cdr<br>mv ~/Desktop/Catalina.cdr ~/Desktop/Catalina.iso</p>
 <h2 id="直通显卡"><a href="#直通显卡" class="headerlink" title="直通显卡"></a>直通显卡</h2><p>hypervisor.cpuid.v0 = “FALSE”</p>
 <p>第一次设置要重启esxi</p>
@@ -293,11 +283,11 @@
 <p>usb.generic.allowHID = “TRUE”<br>usb.quirks.device0 = “0x24ae:0x2003 allow”<br>usb.quirks.device1 = “0x413c:0x2107 allow”<br>usb.quirks.device2 = “0x093a:0x2510 allow”</p>
 <p>vi /bootbank/boot.cfg<br>CONFIG./USB/quirks=0x24ae:0x2003::0xffff:UQ_KBD_IGNORE:0x413c:0x2107::0xffff:UQ_KBD_IGNORE:0x093a:0x2510::0xffff:UQ_KBD_IGNORE</p>
 <p>第一次设置要重启esxi</p>
-<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml" target="_blank" rel="noopener">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
+<h2 id="esxi-upgrade"><a href="#esxi-upgrade" class="headerlink" title="esxi upgrade"></a>esxi upgrade</h2><p>vim-cmd /hostsvc/maintenance_mode_enter<br>esxcli network firewall ruleset set -e true -r httpClient<br>esxcli software sources profile list -d <a target="_blank" rel="noopener" href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> | grep ESXi-7.0.0<br>esxcli software profile update -d <a target="_blank" rel="noopener" href="https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml">https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml</a> -p ESXi-7.0.0-15843807-standard<br>reboot<br>vim-cmd /hostsvc/maintenance_mode_exit</p>
 <p>esxcli software sources profile list -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip<br>esxcli software profile update -p ESXi-7.0.0-15843807-standard -d /vmfs/volumes/5c9bf508-925a81c5-8aa9-40623106c271/VMware-ESXi-7.0.0-15843807-depot.zip –dry-run</p>
 <p>esxcli software profile update –allow-downgrades</p>
 <h2 id="esxi-挂载upan"><a href="#esxi-挂载upan" class="headerlink" title="esxi 挂载upan"></a>esxi 挂载upan</h2><p>/etc/init.d/usbarbitrator stop<br>esxcli storage core device list | grep -i usb<br>esxcli storage filesystem list</p>
-<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a href="https://github.com/shanyungyang/esxi-unlocker" target="_blank" rel="noopener">https://github.com/shanyungyang/esxi-unlocker</a></p>
+<h2 id="esxi解锁"><a href="#esxi解锁" class="headerlink" title="esxi解锁"></a>esxi解锁</h2><p><a target="_blank" rel="noopener" href="https://github.com/shanyungyang/esxi-unlocker">https://github.com/shanyungyang/esxi-unlocker</a></p>
 
     </div>
 
@@ -398,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载镜像"><span class="nav-number">1.</span> <span class="nav-text">下载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换格式"><span class="nav-number">2.</span> <span class="nav-text">转换格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直通显卡"><span class="nav-number">3.</span> <span class="nav-text">直通显卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直通usb鼠标键盘"><span class="nav-number">4.</span> <span class="nav-text">直通usb鼠标键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-upgrade"><span class="nav-number">5.</span> <span class="nav-text">esxi upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-挂载upan"><span class="nav-number">6.</span> <span class="nav-text">esxi 挂载upan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi解锁"><span class="nav-number">7.</span> <span class="nav-text">esxi解锁</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">下载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">转换格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E9%80%9A%E6%98%BE%E5%8D%A1"><span class="nav-number">3.</span> <span class="nav-text">直通显卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E9%80%9Ausb%E9%BC%A0%E6%A0%87%E9%94%AE%E7%9B%98"><span class="nav-number">4.</span> <span class="nav-text">直通usb鼠标键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-upgrade"><span class="nav-number">5.</span> <span class="nav-text">esxi upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi-%E6%8C%82%E8%BD%BDupan"><span class="nav-number">6.</span> <span class="nav-text">esxi 挂载upan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esxi%E8%A7%A3%E9%94%81"><span class="nav-number">7.</span> <span class="nav-text">esxi解锁</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -414,20 +404,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -459,7 +449,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -468,12 +458,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

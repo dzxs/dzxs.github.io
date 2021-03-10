@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -136,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -264,7 +264,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>671</span>
+              <span>701</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -285,15 +285,15 @@
       
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>没有U盘，要装系统<br>搭建pxe，插网线，装系统<br>A电脑：要装系统的<br>B电脑：PXE服务 </p>
 <h2 id="B电脑-安装配置dnsmasq"><a href="#B电脑-安装配置dnsmasq" class="headerlink" title="B电脑 安装配置dnsmasq"></a>B电脑 安装配置dnsmasq</h2><p>vim /etc/dnsmasq.conf</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">port=0</span><br><span class="line">interface=eth0</span><br><span class="line">bind-interfaces</span><br><span class="line">dhcp-range=192.168.1.72,192.168.1.73,12h</span><br><span class="line">dhcp-match=BC_EFI,option:client-arch,7</span><br><span class="line">pxe-service=tag:BC_EFI,BC_EFI, "Install Linux on x86-64 UEFI", uefi/arch.efi</span><br><span class="line">dhcp-boot=tag:BC_EFI,uefi/arch.efi</span><br><span class="line">dhcp-options=3,192.168.1.1 #设置网关</span><br><span class="line">dhcp-options=6,8.8.8.8</span><br><span class="line">enable-tftp</span><br><span class="line">tftp-root=/path/to/tftpboot/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">port=0</span><br><span class="line">interface=eth0</span><br><span class="line">bind-interfaces</span><br><span class="line">dhcp-range=192.168.1.72,192.168.1.73,12h</span><br><span class="line">dhcp-match=BC_EFI,option:client-arch,7</span><br><span class="line">pxe-service=tag:BC_EFI,BC_EFI, &quot;Install Linux on x86-64 UEFI&quot;, uefi/arch.efi</span><br><span class="line">dhcp-boot=tag:BC_EFI,uefi/arch.efi</span><br><span class="line">dhcp-options=3,192.168.1.1 #设置网关</span><br><span class="line">dhcp-options=6,8.8.8.8</span><br><span class="line">enable-tftp</span><br><span class="line">tftp-root=/path/to/tftpboot/</span><br></pre></td></tr></table></figure>
 
-<p>arch.efi 从arch linux 官网下载 <a href="https://www.archlinux.org/releng/netboot/" target="_blank" rel="noopener">https://www.archlinux.org/releng/netboot/</a></p>
+<p>arch.efi 从arch linux 官网下载 <a target="_blank" rel="noopener" href="https://www.archlinux.org/releng/netboot/">https://www.archlinux.org/releng/netboot/</a></p>
 <p>启动 dnsmasq</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start dnsmasq.service</span><br></pre></td></tr></table></figure>
 
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h4 id="A电脑-装系统"><a href="#A电脑-装系统" class="headerlink" title="A电脑 装系统"></a>A电脑 装系统</h4><p>装完后设置一下clover(A电脑还有一个MAC系统是用clover引导的)</p>
 <p>vim /etc/grub.d/40_custom</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">menuentry 'Cl0v3r' --class os &#123;</span><br><span class="line">    insmod part_gpt</span><br><span class="line">    insmod fat</span><br><span class="line">    set root='hd0,gpt1'</span><br><span class="line">    chainloader /EFI/CLOVER/CLOVERX64.efi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">menuentry &#x27;Cl0v3r&#x27; --class os &#123;</span><br><span class="line">    insmod part_gpt</span><br><span class="line">    insmod fat</span><br><span class="line">    set root=&#x27;hd0,gpt1&#x27;</span><br><span class="line">    chainloader /EFI/CLOVER/CLOVERX64.efi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -397,7 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前情提要"><span class="nav-number">1.</span> <span class="nav-text">前情提要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B电脑-安装配置dnsmasq"><span class="nav-number">2.</span> <span class="nav-text">B电脑 安装配置dnsmasq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A电脑-装系统"><span class="nav-number">3.0.1.</span> <span class="nav-text">A电脑 装系统</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%83%85%E6%8F%90%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">前情提要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B%E7%94%B5%E8%84%91-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEdnsmasq"><span class="nav-number">2.</span> <span class="nav-text">B电脑 安装配置dnsmasq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A%E7%94%B5%E8%84%91-%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.0.1.</span> <span class="nav-text">A电脑 装系统</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -413,20 +413,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -458,7 +458,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -467,12 +467,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -145,17 +145,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -302,17 +302,17 @@
         <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>应用商店 安装 Interop Tools (这时 version: 2.0.54.0)</p>
 <p>设置 开发人员模式<br>安装 providers</p>
 <p>从这里找到那些providers</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//i</span>nsidewindows.net<span class="regexp">/category/i</span>nterop-tools<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//i</span>nsidewindows.net<span class="regexp">/category/i</span>nterop-tools/</span><br></pre></td></tr></table></figure>
 <p>或者从这里</p>
 <a href="/lumia-920-upgrade-win10/InteropTools.Providers.Registry.NDTKProvider.App_1.0.6.0_arm.appxbundle" title="InteropTools.Providers.Registry.NDTKProvider.App_1.0.6.0_arm.appxbundle">InteropTools.Providers.Registry.NDTKProvider.App_1.0.6.0_arm.appxbundle</a>
 <a href="/lumia-920-upgrade-win10/InteropTools.Providers.Registry.RegistryRTProvider.App_1.0.12.0_x86_x64_arm.appxbundle" title="InteropTools.Providers.Registry.RegistryRTProvider.App_1.0.12.0_x86_x64_arm.appxbundle">InteropTools.Providers.Registry.RegistryRTProvider.App_1.0.12.0_x86_x64_arm.appxbundle</a>
-<a id="more"></a>
+<span id="more"></span>
 <p>传到手机上，点击安装</p>
 <img data-src="/lumia-920-upgrade-win10/Providers.png" class="" title="Providers">
 <p>这样就可以修改注册表了</p>
 <h2 id="改注册表"><a href="#改注册表" class="headerlink" title="改注册表"></a>改注册表</h2><p>注册表路径<br>[HKEY_LOCAL_MACHINE\System\Platform\DeviceTargetingInfo]</p>
 <p>改改改</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">PhoneManufacturer = NOKIA</span><br><span class="line">MicrosoftMDG</span><br><span class="line">PhoneManufacturerModelName = RM<span class="number">-822</span>_apac_prc_204</span><br><span class="line">RM<span class="number">-1118</span>_11280</span><br><span class="line">PhoneModelName = Nokia <span class="number">920</span></span><br><span class="line">RM<span class="number">-1118</span></span><br><span class="line">PhoneHardwareVariant = RM<span class="number">-822</span></span><br><span class="line">RM<span class="number">-1118</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">PhoneManufacturer</span> = NOKIA</span><br><span class="line"><span class="attribute">MicrosoftMDG</span></span><br><span class="line"><span class="attribute">PhoneManufacturerModelName</span> = RM-<span class="number">822</span>_apac_prc_<span class="number">204</span></span><br><span class="line"><span class="attribute">RM</span>-<span class="number">1118</span>_<span class="number">11280</span></span><br><span class="line"><span class="attribute">PhoneModelName</span> = Nokia <span class="number">920</span></span><br><span class="line"><span class="attribute">RM</span>-<span class="number">1118</span></span><br><span class="line"><span class="attribute">PhoneHardwareVariant</span> = RM-<span class="number">822</span></span><br><span class="line"><span class="attribute">RM</span>-<span class="number">1118</span></span><br></pre></td></tr></table></figure>
 <p>图例</p>
 <img data-src="/lumia-920-upgrade-win10/PhoneHardwareVariant.png" class="" title="PhoneHardwareVariant">
 <img data-src="/lumia-920-upgrade-win10/PhoneManufacturer.png" class="" title="PhoneManufacturer">
@@ -322,7 +322,7 @@
 <h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><img data-src="/lumia-920-upgrade-win10/upgrade.png" class="" title="upgrade">
 <img data-src="/lumia-920-upgrade-win10/result.png" class="" title="完">
 
-<h2 id="记一下"><a href="#记一下" class="headerlink" title="记一下"></a>记一下</h2><figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">https:</span>//en.wikipedia<span class="meta">.org</span>/wiki/Windows_10_version_history<span class="meta">#Mobile_version_history</span></span><br></pre></td></tr></table></figure>
+<h2 id="记一下"><a href="#记一下" class="headerlink" title="记一下"></a>记一下</h2><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>en.wikipedia.org<span class="regexp">/wiki/</span>Windows_10_version_history<span class="comment">#Mobile_version_history</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用"><a href="#摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用" class="headerlink" title="摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用"></a>摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用</h2>
     </div>
@@ -428,7 +428,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改注册表"><span class="nav-number">2.</span> <span class="nav-text">改注册表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">3.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记一下"><span class="nav-number">4.</span> <span class="nav-text">记一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用"><span class="nav-number">5.</span> <span class="nav-text">摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">改注册表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">3.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E4%B8%80%E4%B8%8B"><span class="nav-number">4.</span> <span class="nav-text">记一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%94%E5%9D%8F%E4%BA%86%E5%B1%8F%E5%B9%95%E5%95%8A%E5%95%8A%E5%95%8A%E5%95%8A%EF%BC%8C%E5%8F%AA%E8%83%BD%E4%BB%8E%E6%9D%82%E7%89%A9%E9%87%8C%E6%8E%8F%E5%87%BA%E4%B8%AAI9105P%E7%94%A8%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">摔坏了屏幕啊啊啊啊，只能从杂物里掏出个I9105P用用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -444,20 +444,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -489,7 +489,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -498,12 +498,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

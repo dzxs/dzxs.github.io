@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -136,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -271,7 +271,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -291,9 +291,9 @@
 
       
         <h2 id="黑苹果"><a href="#黑苹果" class="headerlink" title="黑苹果"></a>黑苹果</h2><p>用u盘可以引导<br>同样安装了clover的hdd看不到引导<br>已经设置uefi only<br>解决方法：从U盘引导进clover，利用clover里的uefi shell 安装引导</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">diskutil list</span><br><span class="line">newfs_msdos -v EFI /dev/diskXsX</span><br><span class="line"><span class="comment"># 第一个X是osx所在硬盘，第二个X是efi分区</span></span><br><span class="line">安装或者复制clover到这里</span><br><span class="line"></span><br><span class="line">从U盘uefi启动clover，进uefi shell</span><br><span class="line">Shell&gt; map fs*</span><br><span class="line">Shell&gt; fsX:</span><br><span class="line"><span class="comment"># X是efi分区</span></span><br><span class="line">FSX:\&gt; <span class="built_in">cd</span> \EFI\BOOT\</span><br><span class="line">FSX:\EFI\BOOT\&gt; <span class="built_in">help</span> bcfg</span><br><span class="line">FSX:\EFI\BOOT\&gt; bcfg boot dump</span><br><span class="line">FSX:\EFI\BOOT\&gt; bcfg boot add 0 BOOTX64.EFI <span class="string">"c10v3r"</span></span><br><span class="line"><span class="comment"># 我用 bcfg rm 命令删了其他的，所以这里是0，如果再加，这里就1， </span></span><br><span class="line"><span class="comment"># BOOTX64.EFI 是\EFT\BOOT\BOOTX64.EFI, </span></span><br><span class="line"><span class="string">"c10v3r"</span> 是显示名称</span><br><span class="line">FSX:\EFI\BOOT\&gt; reset</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">diskutil list</span><br><span class="line">newfs_msdos -v EFI /dev/diskXsX</span><br><span class="line"><span class="comment"># 第一个X是osx所在硬盘，第二个X是efi分区</span></span><br><span class="line">安装或者复制clover到这里</span><br><span class="line"></span><br><span class="line">从U盘uefi启动clover，进uefi shell</span><br><span class="line">Shell&gt; map fs*</span><br><span class="line">Shell&gt; fsX:</span><br><span class="line"><span class="comment"># X是efi分区</span></span><br><span class="line">FSX:\&gt; <span class="built_in">cd</span> \EFI\BOOT\</span><br><span class="line">FSX:\EFI\BOOT\&gt; <span class="built_in">help</span> bcfg</span><br><span class="line">FSX:\EFI\BOOT\&gt; bcfg boot dump</span><br><span class="line">FSX:\EFI\BOOT\&gt; bcfg boot add 0 BOOTX64.EFI <span class="string">&quot;c10v3r&quot;</span></span><br><span class="line"><span class="comment"># 我用 bcfg rm 命令删了其他的，所以这里是0，如果再加，这里就1， </span></span><br><span class="line"><span class="comment"># BOOTX64.EFI 是\EFT\BOOT\BOOTX64.EFI, </span></span><br><span class="line"><span class="string">&quot;c10v3r&quot;</span> 是显示名称</span><br><span class="line">FSX:\EFI\BOOT\&gt; reset</span><br></pre></td></tr></table></figure>
 
 <h2 id="启动ssh服务"><a href="#启动ssh服务" class="headerlink" title="启动ssh服务"></a>启动ssh服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist</span><br><span class="line">sudo launchctl unload -w /System/Library/LaunchDaemons/ssh.plist</span><br><span class="line">sudo launchctl list | grep ssh</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
 
@@ -303,7 +303,7 @@
 <li><p>预览无响应</p>
 <p>SMBIOS 换成 iMac 13,1</p>
 </li>
-<li><p>卡kextd stall (240s): ‘AppleACPICPU’<br> <del>mv /System/Library/Extensions/AppleACPIPlatform.kext /Volumes/EFI/EFI/CLOVER/kexts/Other/ ## 移动AppleACPIPlatform.kext到Clover</del><br> <del>用最新的 clover</del><br> <del>和最新的</del> <a href="https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/" target="_blank" rel="noopener">fakesmc</a></p>
+<li><p>卡kextd stall (240s): ‘AppleACPICPU’<br> <del>mv /System/Library/Extensions/AppleACPIPlatform.kext /Volumes/EFI/EFI/CLOVER/kexts/Other/ ## 移动AppleACPIPlatform.kext到Clover</del><br> <del>用最新的 clover</del><br> <del>和最新的</del> <a target="_blank" rel="noopener" href="https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/">fakesmc</a></p>
 <p> 真正的原因是<code>fakesmc</code>或者<code>virtualsmc</code>没有起作用,要确保<code>config.plist</code>的<code>SystemParameters &gt; InjectKexts</code> 为 <code>Detect</code> 或 <code>Yes</code>,来确保clover启动时自动注入kexts<br> 如果是使用Clover Configurator工具来编辑config.plist,步骤如下 <code>系统参数-&gt;注入</code>Kexts方式 选择 <code>Detect</code> 或者 <code>Yes</code> (英文应该是<code>SystemParameters-&gt; InjectKexts</code> 选择 <code>Detect</code> 或者 <code>Yes</code>)</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>SystemParameters<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 其他参数 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注入Kexts方式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>InjectKexts<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>Detect<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -316,8 +316,7 @@
 <p><del>确定bootloader有网卡驱动，如CLOVER/kext/Other/RealtekRTL8111.kext，确定此时可以上网，重试多几次，就可以了。</del><br>设置正确的系统时间<br><code>sudo date 0102030418</code> (设置时间为2018年01月02日03点04分)<br><code>sudo date 0304</code> (设置时间为当天时间03点04分)<br>不行的话可以+8个时区，譬如03:04加8个时区到11点04分 <code>sudo date 1104</code>, 或者减8个时区 <code>sudo date 0101190418</code></p>
 </li>
 <li><p>verbose mode 日志</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">log</span> show --style syslog --<span class="built_in">source</span> --last boot</span><br><span class="line"><span class="built_in">log</span> show --last boot --predicate <span class="string">'sender="kernel"'</span> | head -n 20</span><br><span class="line"></span><br><span class="line"><span class="comment"># oc</span></span><br><span class="line"><span class="built_in">log</span> stream --predicate <span class="string">'sender="VoodooPS2Trackpad" and eventMessage contains "synaptics_parse_hw_state"'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># clover</span></span><br><span class="line"><span class="built_in">log</span> stream --predicate <span class="string">'sender="kernel" and eventMessage contains "synaptics_parse_hw_state"'</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">log</span> show --style syslog --<span class="built_in">source</span> --last boot</span><br><span class="line"><span class="built_in">log</span> show --last boot --predicate <span class="string">&#x27;sender=&quot;kernel&quot;&#x27;</span> | head -n 20</span><br><span class="line"></span><br><span class="line"><span class="comment"># oc</span></span><br><span class="line"><span class="built_in">log</span> stream --predicate <span class="string">&#x27;sender=&quot;VoodooPS2Trackpad&quot; and eventMessage contains &quot;synaptics_parse_hw_state&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># clover</span></span><br><span class="line"><span class="built_in">log</span> stream --predicate <span class="string">&#x27;sender=&quot;kernel&quot; and eventMessage contains &quot;synaptics_parse_hw_state&quot;&#x27;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>verbose mode (啰嗦模式)End random seed +++++++ 卡加号<br> clover 的KernelPm 设置为true (或者false)</p>
 </li>
 </ol>
@@ -424,7 +423,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#黑苹果"><span class="nav-number">1.</span> <span class="nav-text">黑苹果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动ssh服务"><span class="nav-number">2.</span> <span class="nav-text">启动ssh服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读更新链接"><span class="nav-number">3.</span> <span class="nav-text">读更新链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇奇怪怪的问题"><span class="nav-number">4.</span> <span class="nav-text">奇奇怪怪的问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%91%E8%8B%B9%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">黑苹果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8ssh%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">启动ssh服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E6%9B%B4%E6%96%B0%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">读更新链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">奇奇怪怪的问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -440,20 +439,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -485,7 +484,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -494,12 +493,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         

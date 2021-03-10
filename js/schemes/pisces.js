@@ -84,3 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Affix.init(document.querySelector('.sidebar-inner'), NexT.utils.getAffixParam());
 });
+console.log("%c星空浩瀚无比，探索永无止境\n%c%s%c🌍\n %chttps://www.pornhub.com %chttps://www.anyporn.com", "font-size:50px", "font-size:10px", "                                                                                                   ______                 \n                                                                                                   |  _  \\                \n                                                                                                   | | | | ______  __ ___ \n                                                                                       ----------  | | | ||_  /\\ \\/ // __|\n                                                                                                   | |/ /  / /  >  < \\__ \\\n                                                                                                   |___/  /___|/_/\\_\\|___/\n",
+      "font-size:60px", "background-color: #FFFFFF; color: #008ce2", "background-color: #FFFFFF; color: #008080");
+
+console.log("藤菜超咸鱼")

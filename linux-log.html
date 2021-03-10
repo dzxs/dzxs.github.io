@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -136,17 +136,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -271,14 +271,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -296,7 +296,7 @@
 
             <i class="fa fa-quote-right"></i>
           </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="目录树"><a href="#目录树" class="headerlink" title="目录树"></a>目录树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gio tree</span><br></pre></td></tr></table></figure>
 
@@ -308,7 +308,7 @@
 
 <h2 id="生成10位密文"><a href="#生成10位密文" class="headerlink" title="生成10位密文"></a>生成10位密文</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl rand 10 -out .secret</span><br></pre></td></tr></table></figure>
 
-<h2 id="postgresql-修改密码"><a href="#postgresql-修改密码" class="headerlink" title="postgresql 修改密码"></a>postgresql 修改密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">alter user some with password <span class="string">'some'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="postgresql-修改密码"><a href="#postgresql-修改密码" class="headerlink" title="postgresql 修改密码"></a>postgresql 修改密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">alter user some with password <span class="string">&#x27;some&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="python-发布"><a href="#python-发布" class="headerlink" title="python 发布"></a>python 发布</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python setup.py sdist</span><br><span class="line">python setup.py bdist_wheel</span><br></pre></td></tr></table></figure>
 
@@ -321,13 +321,13 @@
 
 <h2 id="感觉要记记的"><a href="#感觉要记记的" class="headerlink" title="感觉要记记的"></a>感觉要记记的</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl -w vm.nr_hugepages=128</span><br><span class="line">vim /etc/security/limits.conf</span><br><span class="line">* soft memlock 262144</span><br><span class="line">* hard memlock 262144</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">yum install centos-release-scl -y</span><br><span class="line">yum install devtoolset-3-toolchain -y</span><br><span class="line">scl <span class="built_in">enable</span> devtoolset-3 bash</span><br></pre></td></tr></table></figure>
 
-<h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">awk <span class="string">'&#123;print $5&#125;'</span> access.log |awk -F <span class="string">":"</span> <span class="string">'&#123;print $2&#125;'</span>|grep -v -E <span class="string">'google|baidu|youtube|netease|qq\.com|bdstatic|cnzz|alicdn|sinaimg|steamcontent|bdimg|gstatic|static\.|[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.'</span> |sort -u</span><br></pre></td></tr></table></figure>
+<h2 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">awk <span class="string">&#x27;&#123;print $5&#125;&#x27;</span> access.log |awk -F <span class="string">&quot;:&quot;</span> <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>|grep -v -E <span class="string">&#x27;google|baidu|youtube|netease|qq\.com|bdstatic|cnzz|alicdn|sinaimg|steamcontent|bdimg|gstatic|static\.|[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.&#x27;</span> |sort -u</span><br></pre></td></tr></table></figure>
 
 <h2 id="查ip的网址"><a href="#查ip的网址" class="headerlink" title="查ip的网址"></a>查ip的网址</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl ipconfig.co</span><br><span class="line">curl ip.cn</span><br></pre></td></tr></table></figure>
 
 <h2 id="字符串与ascii"><a href="#字符串与ascii" class="headerlink" title="字符串与ascii"></a>字符串与ascii</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> helloworld |xxd </span><br><span class="line">00000000: 6865 6c6c 6f77 6f72 6c64 0a              helloworld.</span><br><span class="line">$ <span class="built_in">echo</span> 6865 6c6c 6f77 6f72 6c64 0a |xxd -r -ps</span><br><span class="line">helloworld</span><br></pre></td></tr></table></figure>
 
-<h2 id="base64编码与解码"><a href="#base64编码与解码" class="headerlink" title="base64编码与解码"></a>base64编码与解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">"admin"</span> | base64</span><br><span class="line"><span class="comment"># YWRtaW4=</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"YWRtaW4="</span> | base64 --decode</span><br><span class="line"><span class="comment"># admin</span></span><br></pre></td></tr></table></figure>
+<h2 id="base64编码与解码"><a href="#base64编码与解码" class="headerlink" title="base64编码与解码"></a>base64编码与解码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;admin&quot;</span> | base64</span><br><span class="line"><span class="comment"># YWRtaW4=</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;YWRtaW4=&quot;</span> | base64 --decode</span><br><span class="line"><span class="comment"># admin</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -431,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录树"><span class="nav-number">1.</span> <span class="nav-text">目录树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看挂载"><span class="nav-number">2.</span> <span class="nav-text">查看挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-install-lxml-报错"><span class="nav-number">3.</span> <span class="nav-text">pip install lxml 报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-install-python-ldap-报错"><span class="nav-number">4.</span> <span class="nav-text">pip install python-ldap 报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成10位密文"><span class="nav-number">5.</span> <span class="nav-text">生成10位密文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postgresql-修改密码"><span class="nav-number">6.</span> <span class="nav-text">postgresql 修改密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-发布"><span class="nav-number">7.</span> <span class="nav-text">python 发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-安装"><span class="nav-number">8.</span> <span class="nav-text">nginx 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables"><span class="nav-number">9.</span> <span class="nav-text">iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感觉要记记的"><span class="nav-number">10.</span> <span class="nav-text">感觉要记记的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤"><span class="nav-number">11.</span> <span class="nav-text">过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查ip的网址"><span class="nav-number">12.</span> <span class="nav-text">查ip的网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串与ascii"><span class="nav-number">13.</span> <span class="nav-text">字符串与ascii</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64编码与解码"><span class="nav-number">14.</span> <span class="nav-text">base64编码与解码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">目录树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%82%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">查看挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-install-lxml-%E6%8A%A5%E9%94%99"><span class="nav-number">3.</span> <span class="nav-text">pip install lxml 报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip-install-python-ldap-%E6%8A%A5%E9%94%99"><span class="nav-number">4.</span> <span class="nav-text">pip install python-ldap 报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%9010%E4%BD%8D%E5%AF%86%E6%96%87"><span class="nav-number">5.</span> <span class="nav-text">生成10位密文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postgresql-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">postgresql 修改密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E5%8F%91%E5%B8%83"><span class="nav-number">7.</span> <span class="nav-text">python 发布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-%E5%AE%89%E8%A3%85"><span class="nav-number">8.</span> <span class="nav-text">nginx 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables"><span class="nav-number">9.</span> <span class="nav-text">iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E8%A7%89%E8%A6%81%E8%AE%B0%E8%AE%B0%E7%9A%84"><span class="nav-number">10.</span> <span class="nav-text">感觉要记记的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5ip%E7%9A%84%E7%BD%91%E5%9D%80"><span class="nav-number">12.</span> <span class="nav-text">查ip的网址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8Eascii"><span class="nav-number">13.</span> <span class="nav-text">字符串与ascii</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64%E7%BC%96%E7%A0%81%E4%B8%8E%E8%A7%A3%E7%A0%81"><span class="nav-number">14.</span> <span class="nav-text">base64编码与解码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -447,20 +447,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -492,7 +492,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -501,12 +501,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">282k</span>
+    <span title="站点总字数">293k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:16</span>
+    <span title="站点阅读时长">4:26</span>
 </div>
 
         
