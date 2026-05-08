@@ -22,13 +22,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"d2x3.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="黑苹果用u盘可以引导同样安装了clover的hdd看不到引导已经设置uefi only解决方法：从U盘引导进clover，利用clover里的uefi shell 安装引导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于黑苹果的那些事">
-<meta property="og:url" content="https://blog.d2x3.cn/mac-log.html">
+<meta property="og:url" content="https://d2x3.cn/mac-log.html">
 <meta property="og:site_name" content="瞎几把XI[U]E">
 <meta property="og:description" content="黑苹果用u盘可以引导同样安装了clover的hdd看不到引导已经设置uefi only解决方法：从U盘引导进clover，利用clover里的uefi shell 安装引导">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="hackintosh">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.d2x3.cn/mac-log.html">
+<link rel="canonical" href="https://d2x3.cn/mac-log.html">
 
 
 <script id="page-configurations">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -223,7 +223,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.d2x3.cn/mac-log.html">
+    <link itemprop="mainEntityOfPage" href="https://d2x3.cn/mac-log.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/android-chrome-384x384.png">
@@ -309,7 +309,7 @@
 
 <p> (一般通过MultiBeast工具生成的<code>config.plist</code>默认是<code>Detect</code>,所以很多时候自己写的<code>config.plist</code>就有这个问题,而用MultiBeast生成的就没有这个问题.而这个问题出现的原因就是clover启动时没有注入kexts)</p>
 <p> 如果还没能进入系统或还没能通过其他渠道去编辑config.plist使其自动注入kexts,可以在clover界面按<code>空格键</code>(<code>spacebar</code>),选择<code>boot with injected kexts</code>来进入系统.然后修改<code>InjectKexts</code>的值为<code>Detect</code>或<code>Yes</code>,这样每次进入系统就不用手动操作注入了.</p>
-<p>简单方式: <a href="https://blog.d2x3.cn/how-to-make-a-bootable-USB-installation-drive-on-windows.html">用 boot disk Utility 制作u盘</a></p>
+<p>简单方式: <a target="_blank" rel="noopener" href="https://blog.d2x3.cn/how-to-make-a-bootable-USB-installation-drive-on-windows.html">用 boot disk Utility 制作u盘</a></p>
 <p>这个方式生成的config.plist的InjectKexts值也是Detect</p>
 </li>
 <li><p>未能安装macos，安装需要下载重要内容，该内容此时无法下载，请稍后再试。</p>
@@ -439,7 +439,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -480,11 +480,13 @@
         
 
         
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2026036273号 </a>
+  </div>
 
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -593,7 +595,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://blog.d2x3.cn/mac-log.html',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://d2x3.cn/mac-log.html',]
       });
       });
   </script>
